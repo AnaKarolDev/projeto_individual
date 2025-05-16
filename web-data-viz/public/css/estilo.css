@@ -1,11 +1,11 @@
 
-@import url('');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
 
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Barionette Script";
+  font-family: "Pixelify Sans";
   background-color: black;
   background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
   background-size: cover;
@@ -102,6 +102,8 @@ body {
   width: 240px;
   height: 40px;
   justify-content: center;
+  border: none;
+  border-radius: 8px;
   
 }
 
@@ -118,22 +120,53 @@ body {
   gap: 48px;
   
 }
-
+.social img{
+  width: 236px;
+  height: 217px;
+  padding: 24px;
+}
 
 .box img {
   width: 170px;
+
 }
 
 .social .container .boxes {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 100%;
   padding: 30px 0;
-  align-items: baseline;
+  align-items: center;
+}
+
+.social .container .boxes .sobre_mim{
+  display: flex;
+  flex-direction: column;
+  align-self: auto; 
+
 }
 
 .social p {
   text-align: center;
+  
+}
+
+.sobre_mim{
+  background-color: #FEEDE7;
+  width: 960px;
+  height: 433px;
+  
+}
+
+.sobre_mim_titulo{
+  width: 960px;
+  height: 54px;
+  background-color: #FFFFFF;
+}
+
+.sobre_mim_titulo h4{
+  padding-left: 24px;
 }
 
 .box1 {
@@ -141,7 +174,6 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #A4A5C4;
-  border-radius: 8px;
   width: 325px;
   height: 147px;
 }
@@ -151,7 +183,6 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #7887B0;
-  border-radius: 8px;
   width: 325px;
   height: 147px;
 }
@@ -161,7 +192,6 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #CBD9E6;
-  border-radius: 8px;
   width: 325px;
   height: 147px;
 }
@@ -169,7 +199,7 @@ body {
 .boxes{
   display: flex;
   justify-content: space-between;
-  gap: center;
+  gap: ;
   padding: 0;
 }
 
@@ -195,7 +225,6 @@ body {
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
   background-size: cover;
 }
 
@@ -207,8 +236,7 @@ body {
 
 .card {
   width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
+  background-color: #FEEDE7;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -237,7 +265,7 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #EA9ABA;
   text-align: center;
   border-radius: 10px;
   margin: 0;
@@ -249,7 +277,6 @@ body {
   color: gray;
   height: 36px;
   text-align: center;
-  border-radius: 10px;
   margin: 0;
 }
 
