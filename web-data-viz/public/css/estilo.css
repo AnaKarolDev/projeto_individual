@@ -145,6 +145,8 @@ body {
   display: flex;
   flex-direction: column;
   align-self: auto;
+  border-right: 10px solid #EA9ABA;
+    border-bottom: 8px solid #EA9ABA;
 
 }
 
@@ -164,6 +166,7 @@ body {
   width: 960px;
   height: 54px;
   background-color: #FFFFFF;
+  border: 2px solid #EA9ABA
 }
 
 .sobre_mim_titulo h4 {
