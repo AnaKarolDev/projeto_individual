@@ -9,12 +9,12 @@ function autenticar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        jogadorModel.buscarPorJogador(email, senha)
+        jogadorModel.autenticar(emailVar, senhaVar)
             .then((resultadoJogadores) => {
                 if (resultadoJogadores.length > 0) {
                     res.json({
-                        email: resultadoJogadores[0].email,
-                        senha: resultadoJogadores[0].senha,
+                        email: resultadoJogadores[0].emailVar,
+                        senha: resultadoJogadores[0].senhaVar,
 
                     });
                 } else if (resultadoJogadores.length == 0) {

@@ -58,9 +58,9 @@
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
 
-                <div id="div_aguardar" class="loading-div">
+                <!-- <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
+                </div> -->
 
                 <div id="div_erros_login"></div>
             </div>
@@ -106,8 +106,8 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                email,
-                senha
+                email: emailVar,
+                senha: senhaVar
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -151,5 +151,9 @@
     function sumirMensagem() {
         cardErro.style.display = "none"
     }
+
+    function finalizarAguardar() {
+    console.log("Finalizou o carregamento");
+}
 
 </script>
