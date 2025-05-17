@@ -7,14 +7,14 @@ function autenticar(req, res) {
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
-        res.status(400).send("Sua senha está indefinida!");
+        res.status(400).send("Sua senha está undefined!");
     } else {
-        jogadorModel.autenticar(emailVar, senhaVar)
+        jogadorModel.autenticar(email, senha)
             .then((resultadoJogadores) => {
                 if (resultadoJogadores.length > 0) {
                     res.json({
-                        email: resultadoJogadores[0].emailVar,
-                        senha: resultadoJogadores[0].senhaVar,
+                        email: resultadoJogadores[0].email,
+                        nome: resultadoJogadores[0].nome,
 
                     });
                 } else if (resultadoJogadores.length == 0) {
