@@ -3,9 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-  margin: 0;
+   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Pixelify Sans";
+  background-color: black;
+  background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
+  background-size: cover;
 }
 
 .label-captura {
@@ -120,7 +123,8 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
+  background-size: cover;
   height: 100vh;
   overflow: auto;
 }
@@ -132,7 +136,7 @@ body {
   width: 70%;
   margin: auto;
   margin-top: 10px;
-  background-color: #212124;
+  
 }
 
 .area-parametros-alerta .titulo-legenda {
@@ -348,8 +352,8 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+ border-right: 3px solid #EA9ABA;
+    background-color: #FEEDE7;
 }
 
 .dash-right {
@@ -365,7 +369,8 @@ canvas {
 }
 
 .header-left h1 {
-  color: #32b9cd;
+  color: #EA9ABA;
+  margin-left: 25px;
 }
 
 .hello {
@@ -375,7 +380,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #EA9ABA;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -387,7 +392,7 @@ canvas {
 .btn-nav {
   width: 40%;
   color: white;
-  background-color: #e6005a;
+  background-color: #EA9ABA;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -396,14 +401,14 @@ canvas {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #e6005a;
+  border: 3px solid #EA9ABA;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #EA9ABA;
   padding: 0;
   margin: 0;
 }
@@ -418,7 +423,7 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #EA9ABA;
   color: white;
   border-radius: 10px;
   text-align: center;

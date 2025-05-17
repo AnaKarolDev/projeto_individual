@@ -26,15 +26,14 @@
 
         <div class="header-left dash-header">
 
-            <h1>AquaTech</h1>
+            <h1>Inside Music</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3><br><br>
-                <h3>CPF: <span id="b_cpf">00000000000</span></h3>
+                <h3>Olá, <span id="b_Jogador">Jogador</span>!</h3><br><br>
             </div>
 
             <div class="btn-nav">
-                <h3>Aquários</h3>
+                <h3>Jogos</h3>
             </div>
 
             <div class="btn-nav-white">
@@ -43,11 +42,11 @@
                 </a>
             </div>
 
-            <div class="btn-nav-white">
+            <!-- <div class="btn-nav-white">
                 <a href="./mural.html">
                     <h3>Mural de Avisos</h3>
                 </a>
-            </div>
+            </div> -->
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -65,29 +64,15 @@
                 <div class="parametros-alerta">
                     <div class="item-regua perigo-frio">
                         <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
+                 
+                  
             </div>
 
             <div class="cards" id="cardAquarios">
-
+                <div class="item-regua perigo-quente">
+                        <p>Perigo</p>
+                        <p>&gt;=23°C</p>
+                    </div>
             </div>
 
         </div>
@@ -97,10 +82,10 @@
 </body>
 
 <script>
- b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
- b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
+ b_jogador.innerHTML = sessionStorage.NOME_USUARIO;
+//  b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
     function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
+        JSON.parse(sessionStorage.PONTOS).forEach(item => {
             document.getElementById("cardAquarios").innerHTML += `
                     <div class="card-aquario">
                         <div class="title-aquario">
