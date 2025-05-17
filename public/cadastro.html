@@ -8,14 +8,14 @@
 
   <title>Inside Music</title>
 
-  <script src="./js/sessao.js"></script>
+  <!-- <script src="./js/sessao.js"></script> -->
 
   <link rel="stylesheet" href="./css/estilo.css" />
   <link rel="icon" href="../public/assets/imgs/logo_inside.png" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body onload="listar()">
+<!-- <body onload="listar()"> -->
   <!--header inicio-->
   <div class="header">
     <div class="container">
@@ -66,9 +66,9 @@
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
         </div>
-        <div id="div_aguardar" class="loading-div">
+        <!-- <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div>
+        </div> -->
 
         <div id="div_erros_login"></div>
       </div>
@@ -88,27 +88,21 @@
 
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaJogadoresCadastrados = [];
-
   function cadastrar() {
-    // aguardar();´´
-
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value;
-    var emailVar = email_input.value;
-    var senhaVar = senha_input.value;
-    var confirmacaoSenhaVar = confirmacao_senha_input.value;
-   
+    var nome = nome_input.value;
+    var email = email_input.value;
+    var senha = senha_input.value;
+    var confirmacaoSenha = confirmacao_senha_input.value; 
 
 
     // Verificando se há algum campo em branco
     if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      nome == "" ||
+      email == "" ||
+      senha == "" ||
+      confirmacaoSenha == ""
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -120,54 +114,38 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    if (nomeVar.length <= 1) {
+    if (nome.length <= 1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Insira um nome maior)";
       finalizarAguardar();
       return false;
-    } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+    } else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Insira um email válido!)";
       finalizarAguardar();
       return false;
-    } else if (senhaVar.length < 6) {
+    } else if (senha.length < 6) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Insira um senha válida!)";
       finalizarAguardar();
       return false;
-    } else if (confirmacaoSenhaVar != senhaVar) {
+    } else if (confirmacaoSenha != senha) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(As senhas devem ser iguais!)";
       finalizarAguardar();
       return false;
     }
-
-    // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaJogadoresCadastrados.length; i++) {
-      if (listaJogadoresCadastrados[i].idJogadorVincular == codigoVar) {
-        idJogadorVincular = listaJogadoresCadastrados[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
-
-
-    // Enviando o valor da nova input
-    fetch("/jogadores/cadastrar", {
+    
+    fetch("/jogador/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar
+        nome,
+        email,
+        senha,
 
       }),
     })
@@ -189,33 +167,9 @@
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
       });
 
     return false;
-  }
-
-  // Listando jogadores cadastrados 
-  function listar() {
-    fetch("/jogadores/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((jogadores) => {
-          jogadores.forEach((jogador) => {
-            listaJogadoresCadastrados.push(jogador);
-
-            console.log("listaJogadoresCadastrados")
-            console.log(listaJogadoresCadastrados[0].idJogador)
-          }); 
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
   }
 
   function sumirMensagem() {

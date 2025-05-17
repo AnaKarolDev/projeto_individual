@@ -8,7 +8,6 @@
 
     <title>Inside Music | Login</title>
 
-    <script src="./js/sessao.js"></script>
 
     <link rel="stylesheet" href="./css/estilo.css">
     <link rel="icon" href="./assets/imgs/logo_inside.png">
@@ -84,8 +83,7 @@
 
 
     function entrar() {
-        aguardar();
-
+       
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
@@ -102,14 +100,14 @@
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/jogador/autenticar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
+                email,
+                senha
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
@@ -122,10 +120,9 @@
                     console.log(json);
                     console.log(JSON.stringify(json));
 
-                    sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.SENHA_USUARIO = json.senha;
-                    sessionStorage.ID_USUARIO = json.idJogador;
                    
 
                     setTimeout(function () {

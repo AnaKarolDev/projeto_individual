@@ -9,16 +9,15 @@ function autenticar(req, res) {
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
-        jogadorModel.buscarPorJogador(resultadoAutenticar[0].idJogador)
+        jogadorModel.buscarPorJogador(email, senha)
             .then((resultadoJogadores) => {
                 if (resultadoJogadores.length > 0) {
                     res.json({
-                        id: resultadoAutenticar[0].idJogador,
-                        email: resultadoAutenticar[0].email,
-                        nome: resultadoAutenticar[0].nome,
-                        
+                        email: resultadoJogadores[0].email,
+                        senha: resultadoJogadores[0].senha,
+
                     });
-                } else if (resultadoAutenticar.length == 0) {
+                } else if (resultadoJogadores.length == 0) {
                     res.status(403).send("Email e/ou senha inválido(s)");
                 } else {
                     res.status(403).send("Mais de um usuário com o mesmo login e senha!");
@@ -36,12 +35,11 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
+    console.log("Corpo da requisição:", req.body);
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    // var idJogador = req.body.idJogadorServer;
-
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -50,9 +48,12 @@ function cadastrar(req, res) {
         res.status(400).send("Seu email está undefined!");
     } else if (senha == undefined) {
         res.status(400).send("Sua senha está undefined!");
-    } else if (idJogador == undefined) {
-        res.status(400).send("Jogador está undefined!");
     } else {
+
+        console.log("Recebido no backend:");
+        console.log("Nome:", nome);
+        console.log("Email:", email);
+        console.log("Senha:", senha);
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
         jogadorModel.cadastrar(nome, email, senha)
