@@ -1,8 +1,8 @@
 var jogadorModel = require("../models/jogadorModel");
 
 function autenticar(req, res) {
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var email = req.body.email;
+    var senha = req.body.senha;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -37,26 +37,21 @@ function autenticar(req, res) {
 function cadastrar(req, res) {
     console.log("Corpo da requisição:", req.body);
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var nome = req.body.nomeServer;
-    var email = req.body.emailServer;
-    var senha = req.body.senhaServer;
+    var nomeServer = req.body.nome;
+    var emailServer = req.body.email;
+    var senhaServer = req.body.senha;
 
     // Faça as validações dos valores
-    if (nome == undefined) {
+    if (nomeServer == undefined) {
         res.status(400).send("Seu nome está undefined!");
-    } else if (email == undefined) {
+    } else if (emailServer == undefined) {
         res.status(400).send("Seu email está undefined!");
-    } else if (senha == undefined) {
+    } else if (senhaServer == undefined) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-        console.log("Recebido no backend:");
-        console.log("Nome:", nome);
-        console.log("Email:", email);
-        console.log("Senha:", senha);
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        jogadorModel.cadastrar(nome, email, senha)
+               // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        jogadorModel.cadastrar(nomeServer, emailServer, senhaServer)
             .then(
                 function (resultado) {
                     res.json(resultado);

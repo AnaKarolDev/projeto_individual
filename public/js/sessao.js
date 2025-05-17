@@ -4,7 +4,6 @@ function validarSessao() {
     var nome = sessionStorage.NOME_USUARIO;
     
 
-    var b_jogador = document.getElementById("b_jogador");
 
     if (email != null && nome != null) {
         alert(`Sessão ativa!\nNome: ${nome}\nEmail: ${email}`);
