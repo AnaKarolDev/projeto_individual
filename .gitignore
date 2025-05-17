@@ -2,5 +2,6 @@
 node_modules
 package-lock.json
 .env
-Documentação
 .env.dev
+Documentação
+
