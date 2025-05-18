@@ -130,12 +130,14 @@ body {
 }
 
 .area-parametros-alerta {
-  /* border: 2px solid pink; */
+  border: 2px solid pink;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  align-items: center;
+  width: 50%;
+  height: 80%;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 100px;
   
 }
 
@@ -144,11 +146,14 @@ body {
   font-weight: 600;
   width: fit-content;
   margin: 10px 20px;
+  text-align: center;
 }
 
 .parametros-alerta {
   display: flex;
-  width: 100%;
+ flex-direction: column;
+ align-items: center;
+ margin-top: 30px;
 }
 
 .item-regua {
@@ -172,27 +177,18 @@ body {
 
 .perigo-frio {
   background-color: #5c6bc0;
+  width: 325px;
+  height: 147px;
 }
 
 .perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
+  background-color: #A4A5C4;
+  width: 325px;
+  height: 147px;
 }
 
 .cards {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   height: 450px;
   width: 100%;
@@ -200,6 +196,13 @@ body {
   color: white;
 }
 
+#cardAquarios{
+  display: flex;
+  padding: 100px;
+  height: 100px;
+}
+
+/* 
 .card-aquario {
   margin: 2%;
   min-width: 40%;
@@ -207,16 +210,16 @@ body {
   width: fit-content;
   flex-wrap: wrap;
   display: flex;
-  /* text-align: center; */
-  height: 180px;
+  text-align: center; */
+  /* height: 180px; */
   /* justify-content: right; */
-  background-color: #212124;
-  font-size: 20px;
-}
+  /* background-color: #212124;
+  font-size: 20px; */
+/* } */
 
-.card-aquario h1 {
+/* .card-aquario h1 {
   width: fit-content;
-}
+} */
 
 .card-aquario p {
   margin: 0;

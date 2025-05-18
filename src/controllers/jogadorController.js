@@ -2,7 +2,7 @@ var jogadorModel = require("../models/jogadorModel");
 
 function autenticar(req, res) {
     var email = req.body.email;
-    var senha = req.body.senha;
+    var senha = req.body.senha
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");

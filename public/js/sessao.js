@@ -3,12 +3,12 @@ function validarSessao() {
     var email = sessionStorage.EMAIL_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
 
-    var b_jogador = document.getElementById("b_jogador");
+    var b_Jogador = document.getElementById("b_Jogador");
 
     if (email != null && nome != null) {
         alert(`Sessão ativa!\nNome: ${nome}\nEmail: ${email}`);
 
-        b_jogador.innerHTML = nome;
+        b_Jogador.innerHTML = nome;
     } else {
         window.location = "../login.html";
     }

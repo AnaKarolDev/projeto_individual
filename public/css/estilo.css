@@ -32,7 +32,7 @@ body {
 .header img {
   width: 196px;
   height: 38px;
-    margin-left: -45%;
+  margin-left: -45%;
 }
 
 .header .container {
@@ -153,7 +153,7 @@ body {
   flex-direction: column;
   align-self: auto;
   border-right: 10px solid #EA9ABA;
-    border-bottom: 8px solid #EA9ABA;
+  border-bottom: 8px solid #EA9ABA;
 
 }
 
@@ -258,16 +258,29 @@ body {
   height: 100%;
 }
 
+.card_login_titulo {
+  width: 100%;
+  height: 54px;
+  background-color: #FFFFFF;
+  border: 2px solid #EA9ABA
+}
+
+.card_login_titulo h4 {
+  padding-left: 24px;
+}
+
 .card {
-  width: 50%;
+  width: 572px;
+  height: 343px;
   background-color: #FEEDE7;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   color: palevioletred;
   flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
+  padding: 0;
+  border-right: 10px solid #EA9ABA;
+  border-bottom: 10px solid #EA9ABA;
 }
 
 .card h2 {
@@ -291,12 +304,11 @@ body {
 .formulario input {
   border: 2px solid #EA9ABA;
   text-align: center;
-  border-radius: 10px;
   margin: 0;
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 2px solid #EA9ABA;
   background-color: white;
   color: gray;
   height: 36px;
@@ -315,11 +327,11 @@ body {
   cursor: pointer;
   font-family: "Barlow", sans-serif;
   border: 0;
-  border-radius: 5px;
+  border: 2px solid #EA9ABA;
   font-weight: 600;
   font-size: 18px;
-  color: #fff;
-  background-color: #ED145B;
+  color: #EA9ABA;
+  background-color: #fff;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -354,7 +366,7 @@ body {
   width: 230px;
   position: fixed;
   border-radius: 4px;
-  border: #ED145B 3px solid;
+  border: #EA9ABA 3px solid;
   padding: 10px;
   margin-right: 10%;
 }
@@ -376,10 +388,9 @@ body {
 
 input {
   margin-bottom: 10px;
-  border: 2px solid #32b9cd;
+  border: 2px solid #EA9ABA;
   padding: 10px;
   text-align: center;
-  border-radius: 10px;
 }
 
 .btn {
@@ -389,8 +400,8 @@ input {
   font-weight: 600;
   font-size: 18px;
   padding: 10px 15px;
-  color: white;
-  background-color: #ED145B;
+  color: #EA9ABA;
+  background-color: white;
   width: 120px;
   align-self: center;
   margin-top: 5px;

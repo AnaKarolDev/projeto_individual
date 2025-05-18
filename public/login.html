@@ -45,7 +45,9 @@
         </div>
         <div class="container">
             <div class="card card-login">
-                <h2>Olá de volta!</h2>
+                <div class="card_login_titulo">
+                <h4>Login</h4>
+                </div>
                 <div class="formulario">
                     <div class="campo">
                         <span>E-mail:</span>
@@ -58,9 +60,9 @@
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
 
-                <!-- <div id="div_aguardar" class="loading-div">
+                <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div> -->
+                </div>
 
                 <div id="div_erros_login"></div>
             </div>
@@ -117,6 +119,7 @@
                 // console.log("JSON recebido no login:", json);
                 
                 resposta.json().then(json => {
+                     console.log("JSON recebido do servidor:", json);
                     console.log(json);
                     console.log(JSON.stringify(json));
 

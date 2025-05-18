@@ -6,21 +6,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>Inside Music</title>
 
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
 
     <script src="../js/sessao.js"></script>
-    <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body onload="validarSessao()">
 
     <div class="janela">
 
@@ -42,11 +41,6 @@
                 </a>
             </div>
 
-            <!-- <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div> -->
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -58,49 +52,28 @@
             <div id="alerta">
             </div>
             <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
+                <h1 class="titulo-legenda">
+                    Jogos
+                </h1>
                 <div class="parametros-alerta">
                     <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
+                        <h1>Quiz</h1>
                  
-                  
             </div>
-
-            <div class="cards" id="cardAquarios">
-                <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
+            <div class="parametros-alerta">
+                    <div class="item-regua perigo-frio">
+                        <h1>Jogo da Memória</h1>
+                 
+                
             </div>
-
         </div>
-
     </div>
 
 </body>
 
 <script>
- b_jogador.innerHTML = sessionStorage.NOME_USUARIO;
-//  b_cpf.innerHTML = sessionStorage.CPF_USUARIO;
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.PONTOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
-        });
-    }
+ b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
+
 
 </script>
 

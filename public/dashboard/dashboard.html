@@ -50,11 +50,6 @@
 
             </div>
 
-            <!-- <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div> -->
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
@@ -80,14 +75,14 @@
 </html>
 
 <script>
-    b_jogador.innerHTML = sessionStorage.NOME_USUARIO;
+    b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
 
     window.onload = exibirDashDoUsuario();
 
     function exibirDashDoUsuario() {
-        var pontos = JSON.parse(sessionStorage.PONTOS);
+        var pontos = JSON.parse(sessionStorage.NOME_USUARIO);
         pontos.forEach(item => {
             document.getElementById("btnDash").innerHTML += `
             <button class="btn-chart" onclick="exibirDash(${item.id})" id="btnDash${item.id}">${item.descricao}</button>
