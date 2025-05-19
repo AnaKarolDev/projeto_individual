@@ -3,12 +3,16 @@
 
 body {
   margin: 0;
-  padding: 0;
+  height: 100vh;
   font-family: "Pixelify Sans";
-  background-color: black;
-  background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
+  background-image: url("../assets/imgs/cloud_backgroud.png");
   background-size: cover;
 
+}
+
+& img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 :root {
@@ -44,7 +48,9 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #384056;
+  color: #FEEDE7;
+  font-size: 24px;  
+
 }
 
 .agora {
@@ -57,7 +63,7 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style: none;
-  color: #e3b062;
+  color: #FEEDE7;
 }
 
 .titulo {
@@ -108,12 +114,13 @@ body {
   width: 240px;
   height: 40px;
   justify-content: center;
+  align-items: center;
   border: none;
   border-radius: 8px;
+  font-family: "Pixelify Sans";
 
 }
 
-/* MISSÃO VISÃO VALORES */
 
 .social {
   display: flex;
@@ -152,8 +159,8 @@ body {
   display: flex;
   flex-direction: column;
   align-self: auto;
-  border-right: 10px solid #EA9ABA;
-  border-bottom: 8px solid #EA9ABA;
+  border-right: 10px solid #ef5291;
+  border-bottom: 8px solid #ef5291;
 
 }
 
@@ -163,7 +170,7 @@ body {
 }
 
 .sobre_mim {
-  background-color: #FEEDE7;
+  background-color: rgba(240, 240, 240, 0.941);;
   width: 960px;
   height: 433px;
 
@@ -173,11 +180,12 @@ body {
   width: 960px;
   height: 54px;
   background-color: #FFFFFF;
-  border: 2px solid #EA9ABA
+  border: 2px solid #EA9ABA;
 }
 
 .sobre_mim_titulo h4 {
   padding-left: 24px;
+  color: #EA9ABA;
 }
 
 .sobre_mim_texto {
@@ -192,32 +200,6 @@ body {
   color: #7887B0;
 }
 
-.box1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #A4A5C4;
-  width: 325px;
-  height: 147px;
-}
-
-.box2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #7887B0;
-  width: 325px;
-  height: 147px;
-}
-
-.box3 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #CBD9E6;
-  width: 325px;
-  height: 147px;
-}
 
 .boxes {
   display: flex;
@@ -226,6 +208,47 @@ body {
   gap: 0;
 
 }
+
+.music {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.music h2 {
+    font-size: 4em;
+    margin-bottom: 30px;
+    color: #FFFFFF;
+}
+
+.music-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.music-cards .card-95 {
+    background-color: rgba(240, 240, 240, 0.8); /* Branco acinzentado com transparência */
+    border: 2px solid #EA9ABA;
+    box-shadow: 4px 4px #ef5291;
+    width: 250px;
+}
+
+.music-cards .card-header {
+    background-color: #FFFFFF;
+    color: #EA9ABA;
+    padding: 10px;
+    border-bottom: 2px solid #EA9ABA;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.music-cards .card-body {
+    padding: 20px;
+    min-height: 100px;
+}
+
 
 /* FOOTER */
 
@@ -352,7 +375,7 @@ body {
   display: none
 }
 
-/* FORMULARIO */
+/* Cadastro */
 
 .alerta_erro {
   display: flex;
@@ -418,75 +441,80 @@ input {
   width: 50px;
 }
 
-/* SIMULADOR */
 
-.simulador {
-  color: white;
-}
-
-.simulador .container {
+.footer {
+    display: flex;
   flex-direction: column;
-  overflow: scroll;
-  height: var(--tamanho-simulador);
+    color: #333; 
+    padding: 20px 0; 
+     font-family: "Pixelify Sans";
 }
 
-/* ALERTA */
-
-#alerta {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+.footer-content {
+    display: flex;
+    justify-content: space-around; 
+    align-items: center; 
+    max-width: 1200px; 
+    margin: 0 auto; 
 }
 
-.mensagem-alarme {
-  background-color: white;
-  border-radius: 5px;
-  width: 300px;
-  height: 80px;
-  margin: 10px;
-  padding: 10px 0;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+.footer-brand h3 {
+    margin: 0;
+    font-size: 1.5em;
 }
 
-.mensagem-alarme h3 {
-  font-size: 14px;
-  margin: 0;
+.footer-social a {
+  font-family: "Barlow", sans-serif;
+    display: inline-block;
+    margin-right: 10px;
 }
 
-.mensagem-alarme .informacao {
-  width: 66%;
+.footer-social img {
+    width: 24px; 
+    height: 24px;
+    vertical-align: middle; 
+    opacity: 0.7; 
+    transition: opacity 0.3s ease; 
 }
 
-.alarme-sino {
-  width: 48px;
-  height: 48px;
-  animation-name: bell;
-  animation-duration: 4s;
-  background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
-  background-size: cover;
-  animation-iteration-count: infinite;
+.footer-social img:hover {
+    opacity: 1; 
 }
 
-@keyframes bell {
-  0% {
-    transform: rotate(25deg)
-  }
-
-  25% {
-    transform: rotate(-25deg)
-  }
-
-  50% {
-    transform: rotate(25deg)
-  }
-
-  75% {
-    transform: rotate(-25deg)
-  }
-
-  100% {
-    transform: rotate(25deg)
-  }
+.footer-nav ul {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    display: flex; 
 }
+
+.footer-nav li {
+    margin-left: 20px;
+}
+
+.footer-nav li:first-child {
+    margin-left: 0; 
+}
+
+.footer-nav a {
+    color: #333;
+    text-decoration: none; 
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+    opacity: 1;
+}
+
+.footer-brand h3,
+.footer-nav a {
+    font-family: "Pixelify Sans";
+    font-size: 1.8em; 
+}
+
+ .footer-social img { 
+     filter: pixelate(5px); 
+     
+ }
+ 
