@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
+
 
 body{
     display: flex;
@@ -5,6 +7,8 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #FEEDE7;
+    background-image: url("../assets/imgs/cloud_backgroud.png");
+    background-size: cover;
     margin-top: 20px;
     font-family: "Pixelify Sans";
 }
@@ -139,6 +143,7 @@ h1.game-title {
     font-size: 2.5em;
     margin-bottom: 30px;
     text-align: center;
+    color: #ef5291;
 }
 
 /* Estilos para o texto "Tentativas" */
@@ -146,6 +151,7 @@ p.attempts-label {
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 5px;
+    color: #ef5291;
 }
 
 p.attempts-count {
@@ -153,6 +159,7 @@ p.attempts-count {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+    color: #ef5291;
 }
 
 body {
@@ -225,6 +232,7 @@ h1.game-title {
     font-size: 2.5em;
     margin-bottom: 30px;
     text-align: center;
+    font-family: "Pixelify Sans";
 }
 
 /* Estilos para o texto "Tentativas" */
@@ -232,6 +240,7 @@ p.attempts-label {
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 5px;
+    font-family: "Pixelify Sans";
 }
 
 p.attempts-count {
@@ -239,4 +248,22 @@ p.attempts-count {
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
+}
+
+.button-95 {
+  background-color: #FEEDE7;
+  color: #ef5291;
+  border: 2px outset #fff;
+  padding: 5px 15px;
+  cursor: default;
+  font-family: 'Pixelify sans';
+}
+
+.button-95:active {
+  border-style: inset;
+}
+
+.button-95.large {
+  padding: 15px 40px;
+  font-size: 1.8em;
 }
