@@ -19,6 +19,70 @@ const cardPairsData = [
     { id: 4, tipo: "nota", valor: "Sol", simbolo: "🎶" },
 ];
 
+document.addEventListener('DOMContentLoaded', function() {
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  const playButton = document.getElementById('playButton');
+//   const imagem = document.getElementById('logo_inside');
+
+//   imagem.addEventListener('click'), () => {
+//     if(audio.paused){
+//     audio.play();
+//     } else {
+//         audio.pause();
+//     }
+//   }
+
+  if (backgroundMusic && playButton) {
+    playButton.addEventListener('click', function() {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play().catch(error => {
+          console.error("Erro ao reproduzir música:", error);
+          // Opcional: exibir uma mensagem ao usuário sobre o problema
+        });
+        playButton.textContent = 'Pause Música';
+      } else {
+        backgroundMusic.pause();
+        playButton.textContent = 'Play Música';
+      }
+    });
+  }
+});
+// ... seu código JavaScript existente ...
+
+const victoryGifContainer = document.getElementById('victoryGifContainer');
+const closeVictoryGifButton = document.getElementById('closeVictoryGif');
+
+function checkMatch() {
+    const card1 = flippedCards[0];
+    const card2 = flippedCards[1];
+
+    if (card1.dataset.valor === card2.dataset.valor) {
+        playSound(matchSound);
+        matchedPairs++;
+        flippedCards = [];
+        if (matchedPairs === cardPairsData.length / 2) {
+            playSound(winSound);
+            setTimeout(() => {
+                // Mostrar o GIF de vitória
+                victoryGifContainer.style.display = 'flex';
+            }, 500);
+        }
+    } else {
+        playSound(noMatchSound);
+        setTimeout(() => {
+            card1.classList.remove('flipped');
+            card2.classList.remove('flipped');
+            flippedCards = [];
+        }, 1000);
+    }
+}
+
+// Adiciona um event listener para fechar o GIF
+closeVictoryGifButton.addEventListener('click', function() {
+    victoryGifContainer.style.display = 'none';
+    resetGame(); 
+});
+
 function playSound(soundElement) {
     if (soundElement) {
         soundElement.currentTime = 0;

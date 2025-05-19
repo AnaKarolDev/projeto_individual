@@ -10,10 +10,14 @@
 </head>
 
 <body>
-    <audio id="clickSound" src="../assets/sounds/click.wav"></audio>
-    <audio id="matchSound" src="../assets/sounds/match.wav"></audio>
-    <audio id="noMatchSound" src="../assets/sounds/no_match.wav"></audio>
-    <audio id="winSound" src="../assets/sounds/win.wav"></audio>
+    <audio id="clickSound" src="./sounds/plin.mp3"></audio>
+    <audio id="matchSound" src="./sounds/Ping Sound Effect.mp3"></audio>
+    <audio id="noMatchSound" src="./sounds/Losing Sound Effect.mp3"></audio>
+    <audio id="winSound" src="./sounds/Ping Sound Effect.mp3"></audio>
+    <div class="audio-background">
+    <audio id="backgroundMusic" src="./sounds/＂boba date＂ ♫ ｜ cute background music (royalty free).mp3" loop></audio>
+    <button id="playButton" class="button-95">Play Música</button>
+</div>
     <div class="window-border">
         <h1 class="game-title">Pares Musicais</h1>
         <div class="game-grid">
@@ -21,7 +25,12 @@
         <p class="attempts-label">Tentativas:</p>
         <p class="attempts-count">0</p> </div>
     
-        <button class="button-95" onclick="window.location.href='../dashboard/cards.html'"">Voltar</button>
+        <button class="button-95" onclick="window.location.href='../dashboard/cards.html'"">Voltar</button><div id="victoryGifContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1001; background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+    <img id="victoryGif" src="./img/giphy_gif (200×200).gif" alt="Você Venceu!">
+    <button id="closeVictoryGif" class="button-95">Fechar</button>
+</div>
+
+
     <script src="pares_musicais.js"></script>
 </body>
 

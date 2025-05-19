@@ -1,4 +1,4 @@
-var medidaModel = require("../models/medidaModel");
+var medidaModel = require("../models/pontosModel");
 
 function buscarUltimasMedidas(req, res) {
 

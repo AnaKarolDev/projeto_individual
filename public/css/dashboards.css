@@ -129,7 +129,7 @@ body {
   overflow: auto;
 }
 
-.area-parametros-alerta {
+.jogo_memoria {
   border: 2px solid pink;
   display: flex;
   flex-direction: column;
@@ -138,22 +138,33 @@ body {
   height: 80%;
   margin: auto;
   margin-top: 100px;
+  background-color: #FEEDE7;
+  width: 325px;
+  height: 147px;
   
 }
 
-.area-parametros-alerta .titulo-legenda {
+.card_jogos .titulo-legenda {
   color: white;
   font-weight: 600;
   width: fit-content;
   margin: 10px 20px;
   text-align: center;
+  display: flex;
 }
-
-.parametros-alerta {
+.card_jogos{
+   display: flex;
+   justify-content: center;
+   margin: 100px;
+   align-items: center;
+   flex-direction: column;
+}
+.card_jogo_memoria {
   display: flex;
  flex-direction: column;
  align-items: center;
  margin-top: 30px;
+ 
 }
 
 .item-regua {
@@ -175,16 +186,12 @@ body {
   font-weight: 800;
 }
 
-.perigo-frio {
+.jogo_quiz {
   background-color: #FEEDE7;
   width: 325px;
   height: 147px;
-}
-
-.perigo-quente {
-  background-color: #A4A5C4;
-  width: 325px;
-  height: 147px;
+  border: 2px solid pink;
+  text-align: center;
 }
 
 .cards {

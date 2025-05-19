@@ -162,6 +162,35 @@ p.attempts-count {
     color: #ef5291;
 }
 
+.audio-background {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000; 
+}
+
+#victoryGifContainer {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; 
+}
+
+#victoryGif {
+    max-width: 90%; 
+    max-height: 90%;
+}
+
+#closeVictoryGif {
+    margin-top: 10px; 
+}
+
 body {
     font-family: 'MS Sans Serif', sans-serif;
     background-color: #FEEDE7; /* Cinza claro típico do Windows 95 */
@@ -266,4 +295,12 @@ p.attempts-count {
 .button-95.large {
   padding: 15px 40px;
   font-size: 1.8em;
+}
+
+.audio-player{
+    outline: none;
+}
+
+audio{
+    background-color: transparent;
 }
