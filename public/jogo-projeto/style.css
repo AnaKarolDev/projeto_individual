@@ -1,0 +1,241 @@
+/* Reset básico */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font-family: 'VT323', monospace; /* Certifique-se de ter essa fonte importada */
+    background-image: url('clouds-background.jpg'); /* Substitua pelo caminho da sua imagem de nuvens */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #000;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.logo-top {
+    font-size: 2.5em;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+}
+
+header nav li {
+    margin-left: 15px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2em;
+}
+
+header nav .button-95 {
+    margin-left: 20px;
+    padding: 8px 20px;
+    font-size: 1.2em;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero .logo {
+    font-size: 5em;
+    margin-bottom: 30px;
+}
+
+.hero .button-95.large {
+    padding: 15px 40px;
+    font-size: 1.8em;
+}
+
+.about {
+    padding: 40px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.about h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.about .panel-95 {
+    background-color: rgba(240, 240, 240, 0.8); /* Branco acinzentado com transparência */
+    border: 2px solid #808080;
+    box-shadow: 4px 4px #000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 70%;
+}
+
+.about .panel-content img {
+    max-width: 180px;
+    margin-right: 20px;
+    border: 1px solid #000;
+    box-shadow: 2px 2px #808080;
+}
+
+.about .panel-content p {
+    font-size: 1.2em;
+}
+
+.music {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.music h2 {
+    font-size: 4em;
+    margin-bottom: 30px;
+}
+
+.music-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.music-cards .card-95 {
+    background-color: rgba(240, 240, 240, 0.8); /* Branco acinzentado com transparência */
+    border: 2px solid #808080;
+    box-shadow: 4px 4px #000;
+    width: 250px;
+}
+
+.music-cards .card-header {
+    background-color: #e0e0e0;
+    color: #000;
+    padding: 10px;
+    border-bottom: 2px solid #808080;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+.music-cards .card-body {
+    padding: 20px;
+    min-height: 100px;
+}
+
+footer {
+    background-color: rgba(224, 176, 255, 0.8); /* Lilás com transparência */
+    color: #000;
+    padding: 20px 0;
+    font-family: 'VT323', monospace;
+    border-top: 2px solid #000;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-brand h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.footer-social a {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.footer-social img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.footer-nav li {
+    margin-left: 15px;
+}
+
+.footer-nav a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+.button-95 {
+    background-color: #e0e0e0;
+    color: #000;
+    border: 2px outset #fff;
+    padding: 5px 15px;
+    cursor: default;
+    font-family: 'VT323', monospace;
+}
+
+.button-95:active {
+    border-style: inset;
+}
+
+.button-95.large {
+    padding: 15px 40px;
+    font-size: 1.8em;
+}
