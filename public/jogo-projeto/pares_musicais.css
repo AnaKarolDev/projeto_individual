@@ -73,25 +73,7 @@ body{
     font-size: 16px;
 }
 
-body {
-    font-family: 'MS Sans Serif', sans-serif;
-    background-color: #c0c0c0; /* Cinza claro típico do Windows 95 */
-    margin: 0;
-    padding: 20px; /* Adiciona um pouco de espaço ao redor do conteúdo */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    box-sizing: border-box; /* Garante que o padding não afete a largura total */
-}
 
-.container {
-    background-color: #f0f0f0; /* Branco acinzentado das janelas */
-    border: 2px solid #000;
-    box-shadow: 4px 4px #808080;
-    padding: 20px;
-    margin-bottom: 20px; /* Espaço abaixo do container principal */
-}
 
 h1 {
     font-size: 2em;
@@ -102,22 +84,22 @@ h1 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(4, 80px); /* Ajuste o tamanho das cartas conforme necessário */
+    grid-template-columns: repeat(4, 80px);
     grid-gap: 10px;
     margin-bottom: 20px;
 }
 
 .card {
-    background-color: #e0e0e0; /* Cor de fundo dos botões/cartas inativas */
+    background-color: #e0e0e0; 
     border: 2px outset #fff;
     width: 80px;
-    height: 100px; /* Ajuste a altura das cartas conforme necessário */
+    height: 100px; 
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
     cursor: pointer;
-    user-select: none; /* Impede a seleção de texto ao clicar */
+    user-select: none;
 }
 
 .card:active {
@@ -125,9 +107,8 @@ h1 {
 }
 
 .card.revealed {
-    /* Estilos para quando a carta é revelada - você precisará adicionar a lógica para isso com JS */
-    background-color: #fff; /* Exemplo de cor revelada */
-    color: #000; /* Cor do conteúdo revelado */
+    background-color: #fff; 
+    color: #000; 
     border-style: solid;
     border-color: #808080;
 }
@@ -193,22 +174,21 @@ p.attempts-count {
 
 body {
     font-family: 'MS Sans Serif', sans-serif;
-    background-color: #FEEDE7; /* Cinza claro típico do Windows 95 */
+    background-color: #FEEDE7; 
     margin: 0;
-    padding: 20px; /* Adiciona um pouco de espaço ao redor do conteúdo */
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    box-sizing: border-box; /* Garante que o padding não afete a largura total */
+    box-sizing: border-box; 
 }
 
 .window-border {
-    background-color: #FEEDE7; /* Branco acinzentado das janelas */
+    background-color: #FEEDE7; 
     border: 2px solid #EA9ABA;
-    box-shadow: 4px 4px #EA9ABA;
-    padding: 20px; /* Adiciona padding interno à "janela" */
-    margin-bottom: 20px; /* Espaço abaixo da "janela" */
+    padding: 20px; 
+    margin-bottom: 20px; 
+    border: 2px outset #fff
 }
 
 h1 {
@@ -220,22 +200,22 @@ h1 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(4, 80px); /* Ajuste o tamanho das cartas conforme necessário */
+    grid-template-columns: repeat(4, 80px); 
     grid-gap: 10px;
     margin-bottom: 20px;
 }
 
 .card {
-    background-color: #FEEDE7; /* Cor de fundo dos botões/cartas inativas */
+    background-color: #FEEDE7; 
     border: 2px outset #fff;
     width: 80px;
-    height: 100px; /* Ajuste a altura das cartas conforme necessário */
+    height: 100px; 
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
     cursor: pointer;
-    user-select: none; /* Impede a seleção de texto ao clicar */
+    user-select: none; 
 }
 
 .card:active {
@@ -243,9 +223,8 @@ h1 {
 }
 
 .card.revealed {
-    /* Estilos para quando a carta é revelada - você precisará adicionar a lógica para isso com JS */
-    background-color: #fff; /* Exemplo de cor revelada */
-    color: #EA9ABA; /* Cor do conteúdo revelado */
+    background-color: #fff; 
+    color: #EA9ABA; 
     border-style: solid;
     border-color: #808080;
 }

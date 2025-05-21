@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-   margin: 0;
+  margin: 0;
   padding: 0;
   font-family: "Pixelify Sans";
   background-color: black;
@@ -119,6 +119,8 @@ body {
 }
 
 .dash {
+  display: flex;
+  justify-content: center;
   width: 80%;
   position: relative;
   top: 0;
@@ -130,18 +132,18 @@ body {
 }
 
 .jogo_memoria {
-  border: 2px solid pink;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
   height: 80%;
   margin: auto;
-  margin-top: 100px;
+  margin-bottom: 30px;
   background-color: #FEEDE7;
+  border: 2px outset #fff;
   width: 325px;
   height: 147px;
-  
+
 }
 
 .card_jogos .titulo-legenda {
@@ -152,22 +154,26 @@ body {
   text-align: center;
   display: flex;
 }
-.card_jogos{
-   display: flex;
-   justify-content: center;
-   margin: 100px;
-   align-items: center;
-   flex-direction: column;
-}
-.card_jogo_memoria {
+
+.card_jogos {
   display: flex;
- flex-direction: column;
- align-items: center;
- margin-top: 30px;
- 
+  justify-content: center;
+  margin: 100px;
+  align-items: center;
+  flex-direction: column;
+  border: 2px outset #fff;
+  width: 600px;
 }
 
-.item-regua {
+.card_jogo_memoria {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  color: #e6005a;
+}
+
+/* .item-regua {
   width: 20%;
   text-align: center;
   height: 80px;
@@ -184,14 +190,15 @@ body {
 
 .item-regua p:nth-child(2) {
   font-weight: 800;
-}
+} */
 
 .jogo_quiz {
   background-color: #FEEDE7;
   width: 325px;
   height: 147px;
-  border: 2px solid pink;
+  border: 2px outset #fff;
   text-align: center;
+  color: #e6005a;
 }
 
 .cards {
@@ -203,51 +210,10 @@ body {
   color: white;
 }
 
-#cardAquarios{
+#cardAquarios {
   display: flex;
   padding: 100px;
   height: 100px;
-}
-
-/* 
-.card-aquario {
-  margin: 2%;
-  min-width: 40%;
-  max-width: 50%;
-  width: fit-content;
-  flex-wrap: wrap;
-  display: flex;
-  text-align: center; */
-  /* height: 180px; */
-  /* justify-content: right; */
-  /* background-color: #212124;
-  font-size: 20px; */
-/* } */
-
-/* .card-aquario h1 {
-  width: fit-content;
-} */
-
-.card-aquario p {
-  margin: 0;
-  font-size: 50px;
-  font-weight: lighter;
-  text-align: left;
-}
-
-.desc-aquario {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.desc-aquario .cor-alerta {
-  width: 30px;
-}
-
-.title-aquario {
-  width: 100%;
 }
 
 
@@ -362,8 +328,8 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
- border-right: 3px solid #EA9ABA;
-    background-color: #FEEDE7;
+  border: 2px outset #fff;
+  background-color: #FEEDE7;
 }
 
 .dash-right {
@@ -403,7 +369,7 @@ canvas {
   width: 40%;
   color: white;
   background-color: #EA9ABA;
-  border-radius: 5px;
+  border: 2px outset #fff;
   text-align: center;
   padding: 2% 5%;
 }
@@ -411,8 +377,7 @@ canvas {
 .btn-nav-white {
   width: 40%;
   background-color: white;
-  border: 3px solid #EA9ABA;
-  border-radius: 5px;
+  border: 2px outset #fff;
   text-align: center;
   padding: 2% 5%;
 }
@@ -435,7 +400,7 @@ canvas {
   width: 20%;
   background-color: #EA9ABA;
   color: white;
-  border-radius: 10px;
+  border: 2px outset #fff;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;

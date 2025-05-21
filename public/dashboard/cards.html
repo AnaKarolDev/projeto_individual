@@ -55,8 +55,9 @@
                 <h1 class="titulo-legenda">
                     Jogos
                 </h1>
+                <!-- <a href="../jogo-projeto/quiz.html"></a> -->
                 <div class="card_jogo_memoria">
-                    <div class="jogo_quiz">
+                    <div onclick="window.location.href='../jogo-projeto/quiz.html'" class="jogo_quiz">
                         <h1>Quiz</h1>
                  
             </div>
@@ -70,11 +71,16 @@
     </div>
 
 </body>
-
-<script>
- b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
-
-
-</script>
-
 </html>
+<script>
+
+    
+    window.onload = function () {
+        if (sessionStorage.NOME_USUARIO) {
+            document.getElementById("b_Jogador").innerHTML = sessionStorage.NOME_USUARIO;
+        } else {
+            document.getElementById("b_Jogador").innerHTML = "Visitante";
+            console.warn("NOME_USUARIO não encontrado no sessionStorage.");
+        }
+    }
+</script>

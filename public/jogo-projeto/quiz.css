@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
+
+body {
+  font-family: 'Pixelify sans';
+  background-image: url("../assets/imgs/cloud_backgroud.png");
+  color: #ef5291;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  background-size: cover;
+}
+
+.quiz-container {
+  background: #FEEDE7;
+  padding: 30px;
+  max-width: 600px;
+  width: 100%;
+  border: 2px outset #fff;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+button {
+   background-color: #FEEDE7;
+  color: #ef5291;
+  border: 2px outset #fff;
+  padding: 5px 15px;
+  cursor: default;
+  font-family: 'Pixelify sans';
+}
+
+.button-95 {
+  background-color: #FEEDE7;
+  color: #ef5291;
+  border: 2px outset #fff;
+  padding: 5px 15px;
+  cursor: default;
+  font-family: 'Pixelify sans';
+}
+
+.button-95:active {
+  border-style: inset;
+}
+
+.button-95.large {
+  padding: 15px 40px;
+  font-size: 1.8em;
+}
