@@ -147,7 +147,7 @@ function flipCard() {
         if (flippedCards.length === 2) {
             attempts++;
             attemptsDisplay.textContent = attempts;
-            setTimeout(checkMatch, 800);
+            setTimeout(checkMatch, 700);
         }
     }
 }
@@ -173,7 +173,7 @@ function checkMatch() {
             card1.classList.remove('flipped');
             card2.classList.remove('flipped');
             flippedCards = [];
-        }, 800);
+        }, 700);
     }
 }
 
@@ -222,14 +222,14 @@ function salvarPontuacao(pontuacaoAtual) {
         console.log(`Nova menor pontuação: ${pontuacaoAtual}`);
     }
 
-    // (Opcional) Enviar para servidor via fetch POST
-    fetch('/jogo/salvarPontuacao', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            email: sessionStorage.EMAIL_USUARIO,
-            maior: localStorage.getItem('maiorPontuacao'),
-            menor: localStorage.getItem('menorPontuacao')
-        })
-    });
+//      falta enviar para servidor via fetch POST
+//     fetch('/pontos/buscarPontos', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({
+//             email: sessionStorage.EMAIL_USUARIO,
+//             maior: localStorage.getItem('maiorPontuacao'),
+//             menor: localStorage.getItem('menorPontuacao')
+//         })
+//     });
 }

@@ -203,6 +203,7 @@ h1 {
     grid-template-columns: repeat(4, 80px); 
     grid-gap: 10px;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .card {
@@ -230,9 +231,11 @@ h1 {
 }
 
 .attempts {
+    display: flex;
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 10px;
+    gap: 20px;
 }
 
 /* Estilos para o título "Pares Musicais" */
@@ -244,7 +247,14 @@ h1.game-title {
 }
 
 /* Estilos para o texto "Tentativas" */
+
+.attempts{
+    display: flex;
+    justify-items: baseline;
+
+}
 p.attempts-label {
+    flex-direction: ro;
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 5px;
