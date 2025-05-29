@@ -26,8 +26,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    font-family: 'VT323', monospace; /* Certifique-se de ter essa fonte importada */
-    background-image: url('clouds-background.jpg'); /* Substitua pelo caminho da sua imagem de nuvens */
+    font-family: 'VT323', monospace; 
+    background-image: url('clouds-background.jpg'); 
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -113,7 +113,7 @@ header nav .button-95 {
 }
 
 .about .panel-95 {
-    background-color: rgba(240, 240, 240, 0.8); /* Branco acinzentado com transparência */
+    background-color: rgba(240, 240, 240, 0.8); 
     border: 2px solid #808080;
     box-shadow: 4px 4px #000;
     padding: 20px;
