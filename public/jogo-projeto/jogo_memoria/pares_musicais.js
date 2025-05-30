@@ -192,7 +192,7 @@ victoryMusic.currentTime = 0;
 // Fecha o GIF de vitória e reseta
 closeVictoryGifButton.addEventListener('click', function () {
     victoryGifContainer.style.display = 'none';
-    
+
     // Parar a música de vitória
     if (victoryMusic) {
         victoryMusic.pause();
@@ -206,30 +206,30 @@ closeVictoryGifButton.addEventListener('click', function () {
 });
 
 function salvarPontuacao(pontuacaoAtual) {
-    let min = localStorage.getItem('maiorPontuacao');
-    let max = localStorage.getItem('menorPontuacao');
+    let menor = localStorage.getItem('menorPontuacao');
+    let maior = localStorage.getItem('maiorPontuacao');
 
-    min = min ? parseInt(min) : null;
-    max = max ? parseInt(max) : null;
+    menor = menor ? parseInt(menor) : null;
+    maior = maior ? parseInt(maior) : null;
 
-    if (min === null || pontuacaoAtual < min) {
+    if (menor === null || pontuacaoAtual < menor) {
         localStorage.setItem('maiorPontuacao', pontuacaoAtual);
         console.log(`Nova melhor pontuação: ${pontuacaoAtual}`);
     }
 
-    if (max === null || pontuacaoAtual > max) {
+    if (maior === null || pontuacaoAtual > maior) {
         localStorage.setItem('menorPontuacao', pontuacaoAtual);
         console.log(`Nova menor pontuação: ${pontuacaoAtual}`);
     }
 
-//      falta enviar para servidor via fetch POST
-//     fetch('/pontos/buscarPontos', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({
-//             email: sessionStorage.EMAIL_USUARIO,
-//             maior: localStorage.getItem('maiorPontuacao'),
-//             menor: localStorage.getItem('menorPontuacao')
-//         })
-//     });
+    //      falta enviar para servidor via fetch POST
+    //     fetch('/pontos/buscarPontos', {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({
+    //             email: sessionStorage.EMAIL_USUARIO,
+    //             maior: localStorage.getItem('maiorPontuacao'),
+    //             menor: localStorage.getItem('menorPontuacao')
+    //         })
+    //     });
 }

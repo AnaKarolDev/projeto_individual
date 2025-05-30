@@ -88,16 +88,14 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
   const { q1, q2, q3 } = respostas;
 
   if (q1 === "triste" || q3 === "curar") {
-    window.location.href = "conforto.html";
+    window.location.href = "confort.html";
   } else if (q1 === "animado" && q2 === "dancante") {
-    window.location.href = "altavibe.html";
+    window.location.href = "dance.html";
   } else if (q1 === "estressado" || q3 === "relaxar") {
     window.location.href = "zen.html";
   } else if (q1 === "pensativo" || q2 === "profundo") {
     window.location.href = "reflexao.html";
-  } else if (q1 === "romantico") {
-    window.location.href = "coracao.html";
-  } else {
+  }else {
     window.location.href = "sugestao.html";
   }
 });

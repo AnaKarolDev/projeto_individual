@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
+
+
+
+/* style.css */
+body {
+  font-family: 'Pixelify sans';
+  background-size: cover;
+  background-image: url("../img/clouds_backgrounds.jpeg");
+  color: #ef5291;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.player {
+  background-color: #FEEDE7;
+  border: 2px outset #fff;
+  padding: 30px;
+  text-align: center;
+  width: 300px;
+}
+
+.controles button {
+  border: none;
+  margin: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.controles button:hover {
+  background-color: #EA9ABA;
+}
+
+button{
+  background-color: #EA9ABA;
+  border: 2px outset #fff;
+}
+
+/* Barra de progresso */
+.progresso-container {
+  background-color: #fff;
+  height: 10px;
+  margin: 15px 0;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+}
+
+.barra {
+  background-color: #EA9ABA;
+  height: 100%;
+  width: 0%;
+  border-radius: 5px;
+}
+
+/* Tempos */
+.tempos {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Lista de músicas */
+#lista-musicas {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+#lista-musicas li {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #EA9ABA;
+}
+
+#lista-musicas li:hover {
+  background-color: #EA9ABA;
+}

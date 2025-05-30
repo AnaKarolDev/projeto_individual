@@ -7,7 +7,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: #FEEDE7;
-    background-image: url("../assets/imgs/cloud_backgroud.png");
+    background-image: url("../img/clouds_backgrounds.jpeg");
     background-size: cover;
     margin-top: 20px;
     font-family: "Pixelify Sans";
@@ -172,7 +172,7 @@ p.attempts-count {
     margin-top: 10px; 
 }
 
-body {
+/* body {
     font-family: 'MS Sans Serif', sans-serif;
     background-color: #FEEDE7; 
     margin: 0;
@@ -181,7 +181,7 @@ body {
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box; 
-}
+} */
 
 .window-border {
     background-color: #FEEDE7; 

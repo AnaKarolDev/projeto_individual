@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Player de Música</title>
+  <link rel="stylesheet" href="confort.css">
+</head>
+<body>
+  <div class="player">
+    <h2 id="titulo">Playlist Conforto</h2>
+    <audio id="audio" src="../sounds/Ludovico-Einaudi-Nuvole-Bianche.mp3"></audio>
+
+    <!-- Barra de progresso -->
+    <div class="progresso-container" onclick="mudarProgresso(event)">
+      <div class="barra" id="barra"></div>
+    </div>
+
+    <!-- Tempo -->
+    <div class="tempos">
+      <span id="tempo-atual">0:00</span>
+      <span id="tempo-total">0:00</span>
+    </div>
+
+    <!-- Controles -->
+    <div class="controles">
+      <button onclick="voltar()">⏮️</button>
+      <button onclick="tocarOuPausar()" id="botao-play">▶️</button>
+      <button onclick="avancar()">⏭️</button>
+    </div>
+
+    <!-- Lista de reprodução -->
+    <ul id="lista-musicas">
+      <li onclick="selecionarMusica(0)">🎵 Chopin - Nocturne in Eb Major</li>
+      <li onclick="selecionarMusica(1)">🎵 Claude Debussy - Clair de Lune</li>
+      <li onclick="selecionarMusica(2)">🎵 Ludovico Einaudi - Nuvole Bianche</li>
+    </ul>
+    <button class="button-95" onclick="window.location.href='/dashboard/cards.html'"">Voltar</button>
+  </div>
+  <script src="confort.js"></script>
+</body>
+</html>
