@@ -11,38 +11,39 @@
   <!-- <script src="./js/sessao.js"></script> -->
 
   <link rel="stylesheet" href="./css/estilo.css">
-  <link rel="icon" href="./assets/imgs/logo_inside.png">
+  <link rel="icon" href="./assets/imgs/IM_logo.png">
   <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
   <header>
-  <div class="header">
-    <div class="container">
-      <h1 class="titulo"></h1><img src="./assets/imgs/logo_inside.png" alt=""></h1>
-      <ul class="navbar">
-        <li class="agora">
-          <a href="#">Inicial</a>
-        </li>
-        <li>|</li>
-        <li>
-          <a href="login.html" id="jogo">Login</a>
-        </li>
-        <li>
-          <a href="cadastro.html">Cadastro</a>
-        </li>
-        <button onclick="window.location.href='login.html'" class="button-95">Entrar</button>
-      </ul>
-
+     <div class="header">
+        <div class="container">
+            <h1 class="titulo"><img src="./assets/imgs/IM_logo.png" alt=""></h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Inicial</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
+                </li>
+                <button onclick="window.location.href='login.html'" class="button-95">Entrar</button>
+            </ul>
+        </div>
     </div>
+
   </div>
   </header>
   <!--preservando colocar imagem da logo-->
   <div class="banner" id="banner">
     <div class="container">
-      <img id="logo_inside" src="./assets/imgs/logo_inside.png" alt="">
+      <img id="logo_inside" src="./assets/imgs/Inside-Music-midle.png" alt="">
       <div class="audio-player">
-        <audio autoplay>
+        <audio id="musica_fundo">
           <source src="./music/coffe_time.mp3" type="audio/mpeg">
           Seu navegador não suporta o elemento de áudio.
         </audio>
@@ -52,7 +53,7 @@
   </div>
 
   <div class="social">
-    <div class="container">
+    <div class="container_sobre">
       <div class="sobre_mim" id="sobre_mim">
         <div class="sobre_mim_titulo">
           <h4>Sobre mim</h4>
@@ -105,7 +106,7 @@
   <div class="footer">
     <div class="footer-content">
       <div class="footer-brand">
-        <h3>Inside Music</h3>
+        <h3><img src="./assets/imgs/IM_logo.png" alt=""></h3>
       </div>
       <div class="footer-social">
         <a href="#" target="_blank"><img src="./assets/imgs/x_icon.png" alt="X"></a>
@@ -128,3 +129,25 @@
 </body>
 
 </html>
+<script>
+  // Espera o carregamento completo da estrutura da página
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById("musica_fundo");
+
+    // Função que inicia o áudio
+    const iniciarAudio = () => {
+      audio.play().then(() => {
+        console.log("Música iniciada com sucesso.");
+      }).catch((erro) => {
+        console.log("Erro ao iniciar a música:", erro);
+      });
+
+      // Remove o listener para evitar que a música tente iniciar de novo
+      window.removeEventListener("scroll", iniciarAudio);
+    };
+
+    // Escuta a rolagem da página apenas uma vez
+    window.addEventListener("scroll", iniciarAudio, { once: true });
+  });
+</script>
+

@@ -1,5 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
 
+:root {
+  --primary-bg-color: #FEEDE7;
+  /* Rosa muito claro */
+  --secondary-bg-color: #FFFFFF;
+  /* Branco */
+  --accent-color-light: #EA9ABA;
+  /* Rosa claro/médio */
+  --accent-color-dark: #ef5291;
+  /* Rosa vibrante */
+  --text-color-soft: #7887B0;
+  /* Azul acinzentado suave */
+  --border-outset-color: #fff;
+  /* Branco para bordas outset */
+
+  --tamanho-header: 80px;
+  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+  --tamanho-footer: 65px;
+}
+
+
 body {
   font-family: 'Pixelify sans';
   background-image: url("../img/clouds_backgrounds.jpeg");
@@ -16,6 +38,10 @@ body {
   max-width: 600px;
   width: 100%;
   border: 2px outset #fff;
+  background-color: var(--primary-bg-color);
+  border: 3px outset var(--accent-color-light);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 }
 
 .question {
@@ -29,12 +55,16 @@ label {
 }
 
 button {
-   background-color: #FEEDE7;
+  background-color: #FEEDE7;
   color: #ef5291;
   border: 2px outset #fff;
   padding: 5px 15px;
   cursor: pointer;
   font-family: 'Pixelify sans';
+  background-color: var(--primary-bg-color);
+  border: 3px outset var(--accent-color-light);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
 }
 
 .button-95 {

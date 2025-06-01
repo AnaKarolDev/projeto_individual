@@ -1,465 +1,391 @@
-/* pagina mural */
+/* Importação de fontes já feita no estilo.css, mas mantida aqui para clareza */
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: "Pixelify Sans";
-  background-color: black;
-  background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
-  background-size: cover;
+    font-family: "Pixelify Sans", sans-serif;
+    color: var(--text-color-soft);
+    margin: 0;
+    padding: 0;
 }
 
-.label-captura {
-  display: flex;
-  justify-content: center;
+/* Container principal da janela do dashboard */
+.janela {
+    display: flex;
+    min-height: 100vh;
+    /* Garante que a janela ocupe a altura total */
 }
 
-.dash-right .avisos {
-  width: 100%;
-  color: rgb(216, 216, 216);
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* --- HEADER LATERAL (LEFT) --- */
+.header-left {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-right: 3px outset var(--accent-color-light);
+    background-color: var(--primary-bg-color);
+    z-index: 100;
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
-.dash-right .avisos .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.header-left a {
+    text-decoration: none;
+    color: var(--text-color-soft);
 }
 
-.dash-right .avisos .container .div-form {
-  width: 95%;
+.header-left h1 {
+    color: var(--accent-color-dark);
+    font-size: 2.2em;
+    margin: 0 0 20px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-.dash-right .avisos .container .div-form #form_postagem {
-  width: 95%;
+.hello {
+    width: 80%;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border: 2px inset var(--accent-color-light);
+    background-color: var(--secondary-bg-color);
+    border-radius: 5px;
 }
 
-.dash-right .avisos .div-form label {
-  width: 95%;
+.hello h3 {
+    color: var(--accent-color-dark);
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 0;
 }
 
-.dash-right .avisos .div-form input {
-  width: 95%;
-  border-radius: 5px;
+.hello h3 span {
+    font-weight: 700;
+    color: var(--text-color-soft);
 }
 
-.dash-right .avisos .div-form textarea {
-  width: 95%;
-  border: 3px solid #e6005a;
-  background-color: white;
-  border-radius: 5px;
+/* Botões de navegação lateral (aplicando estilo button-95) */
+.btn-nav,
+.btn-nav-white,
+.btn-logout {
+    width: 60%;
+    padding: 10px 15px;
+    margin: 10px 0;
+    text-align: center;
+    border: 2px outset var(--accent-color-light);
+    cursor: pointer;
+    font-family: "Pixelify Sans", sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+    border-radius: 4px;
 }
 
-.dash-right .avisos .div-form button {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: white;
-  background-color: #e6005a;
-  width: 120px;
+.btn-nav:active,
+.btn-nav-white:active,
+.btn-logout:active {
+    border-style: inset;
+    transform: translateY(1px);
 }
 
-.publicacao-btn-editar {
-  cursor: pointer;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 5px 8px;
-  color: white;
-  background-color: #e6005a;
-  width: 80px;
+.btn-nav {
+    background-color: var(--accent-color-dark);
+    color: var(--secondary-bg-color);
 }
 
-.publicacao {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: stretch;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  border-bottom: 3px solid #e6005a;
-  padding: 20px;
+.btn-nav-white {
+    background-color: var(--secondary-bg-color);
+    color: var(--accent-color-dark);
 }
 
-.publicacao>*:not(:last-child) {
-  padding: 0 0 10px 0;
+.btn-nav h3,
+.btn-nav-white h3,
+.btn-logout h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 1.1em;
 }
 
-.div-results {
-  width: 100%;
+.btn-logout {
+    background-color: var(--primary-bg-color);
+    color: var(--accent-color-dark);
+    margin-top: 50px;
+    border: 2px outset var(--accent-color-dark);
 }
 
-.div-results .feed-container {
-  background-color: #212124;
-  border-radius: 5px;
-  margin-bottom: 80px;
+
+/* --- CONTEÚDO PRINCIPAL (INDICADORES E GRÁFICOS) --- */
+.indicadores {
+    flex-grow: 1;
+    padding: 30px;
+    background-image: url("../assets/imgs/cloud_backgroud.png");
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    /* Changed to column to stack indicators and then charts */
+    align-items: center;
+    overflow-y: auto;
 }
 
-.div-buttons {
-  display: flex;
-  justify-content: flex-end;
+/* Cards de Indicadores */
+.indicadores-wrapper {
+    display: flex;
+    /* Changed to flex to align cards horizontally */
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    /* Add space below indicators */
+    flex-wrap: wrap;
+    /* Allow indicators to wrap on smaller screens */
+    max-width: 90%;
 }
 
-.div-buttons>* {
-  margin-left: 30px;
+.card-indicador {
+    background-color: var(--primary-bg-color);
+    border: 3px outset var(--accent-color-light);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 20px 30px;
+    color: var(--accent-color-dark);
+    min-width: 180px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
 }
 
-/* pagina graficos */
-
-.dash-header {
-  background-color: #212124;
+.card-indicador:hover {
+    transform: translateY(-5px);
 }
 
+.card-indicador h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--text-color-soft);
+    text-transform: uppercase;
+}
+
+.card-indicador p {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--accent-color-dark);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* --- GRÁFICOS --- */
+#graficos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    max-width: 1000px;
+    margin-top: 30px;
+    background-color: var(--primary-bg-color);
+    border: 3px outset var(--accent-color-light);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#graficos_bar,
+#graficos_pie {
+    background-color: var(--secondary-bg-color);
+    border: 2px inset var(--accent-color-light);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    min-width: 300px;
+    max-width: 45%;
+
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/*Div jogos - Removed margin-left to prevent layout issues */
 .dash {
-  display: flex;
-  justify-content: center;
-  width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
-  background-image: url("../assets/imgs/clouds_backgrounds.jpeg");
-  background-size: cover;
-  height: 100vh;
-  overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 150px;
+
 }
 
+/* Seções do Jogo da Memória e Quiz */
+.card_jogos {
+    display: flex;
+    /* Added display flex to ensure proper row layout */
+    justify-content: center;
+    margin: 50px auto;
+    align-items: center;
+    flex-direction: row;
+    gap: 40px;
+    /* width: 300px; <-- This was too restrictive, better to use max-width and let content define it */
+    max-width: 800px;
+    /* Add a max-width for the overall container */
+    padding: 30px;
+    background-color: var(--primary-bg-color);
+    border: 3px outset var(--accent-color-light);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
 
-/*Estilização jogo memória*/
+.jogo_memoria,
+.jogo_quiz {
+    background-color: var(--primary-bg-color);
+    border: 3px outset var(--accent-color-light);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    /* Explicit width for these cards */
+    height: 180px;
+    text-align: center;
+    color: var(--accent-color-dark);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
+}
 
-.jogo_memoria {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-  height: 80%;
-  margin: auto;
-  margin-bottom: 30px;
-  background-color: #FEEDE7;
-  border: 2px outset #fff;
-  width: 325px;
-  height: 147px;
-
+.jogo_memoria:hover,
+.jogo_quiz:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .card_jogos .titulo-legenda {
-  color: #e6005a;
-  font-weight: 600;
-  width: fit-content;
-  margin: 10px 20px;
-  text-align: center;
-  display: flex;
-}
-
-.card_jogos {
-  display: flex;
-  justify-content: center;
-  margin: 100px;
-  align-items: center;
-  flex-direction: column;
-  border: 2px outset #fff;
-  width: 600px;
-}
-
-.card_jogo_memoria {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-  color: #e6005a;
-  cursor: pointer;
-}
-
-/*Quiz estilização*/
-
-.jogo_quiz {
-  background-color: #FEEDE7;
-  width: 325px;
-  height: 147px;
-  border: 2px outset #fff;
-  text-align: center;
-  color: #e6005a;
-  cursor: pointer;
+    color: var(--accent-color-dark);
+    font-weight: 600;
+    font-size: 1.4em;
+    margin: 10px;
+    text-align: center;
 }
 
 .cards {
-  display: flex;
-  justify-content: center;
-  height: 450px;
-  width: 100%;
-  align-items: center;
-  color: white;
+    display: flex;
+    justify-content: center;
+    height: 450px;
+    width: 100%;
+    align-items: center;
+    color: white;
 }
 
 #cardAquarios {
-  display: flex;
-  padding: 100px;
-  height: 100px;
+    display: flex;
+    padding: 100px;
+    height: 100px;
 }
 
-
 .cards h1 {
-  font-size: 22px;
-  border-bottom: solid white 1px;
-  text-align: left;
-  font-weight: lighter;
-  margin: 20px;
+    font-size: 22px;
+    border-bottom: solid var(--accent-color-light) 1px;
+    text-align: left;
+    font-weight: lighter;
+    margin: 20px;
+    color: var(--accent-color-dark);
 }
 
 .temperatura,
 .umidade {
-  margin: 5px;
-  margin-left: 20px;
-  width: 75%;
+    margin: 5px;
+    margin-left: 20px;
+    width: 75%;
+    color: var(--text-color-soft);
 }
 
 .cor-alerta {
-  width: 13%;
-  height: 30%;
-  border-radius: 50%;
-  display: inline-block;
+    width: 13%;
+    height: 30%;
+    border-radius: 50%;
+    display: inline-block;
 }
 
 .btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding: 0 10% 0 10%;
 }
 
 .graph {
-  width: 70%;
-  margin: auto;
-  padding-top: 10px;
+    width: 70%;
+    margin: auto;
+    padding-top: 10px;
 }
 
 .tituloGraficos {
-  color: rgb(216, 216, 216);
-  display: flex;
-  justify-content: center;
+    color: var(--accent-color-dark);
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-chart {
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
-  background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
+    font-family: 'Pixelify Sans', sans-serif;
+    border: 2px outset var(--accent-color-light);
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.1s ease;
+}
+
+.btn-chart:active {
+    border-style: inset;
+    transform: translateY(1px);
 }
 
 .btn-pink {
-  color: white;
-  background-color: #e6005a;
+    color: var(--secondary-bg-color);
+    background-color: var(--accent-color-dark);
+    border-color: var(--accent-color-dark);
 }
 
 .btn-white {
-  color: #e6005a;
-  background-color: white;
-
+    color: var(--accent-color-dark);
+    background-color: var(--secondary-bg-color);
+    border-color: var(--accent-color-light);
 }
 
 .label-captura {
-  height: 80px;
+    height: 80px;
 }
 
+/* Classes de display para JavaScript */
 .display-none {
-  display: none;
+    display: none;
 }
 
 .display-flex {
-  display: flex;
+    display: flex;
 }
 
 .display-block {
-  display: block;
-}
-
-/*Indicadores*/
-
-.indicadores {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin: 30px auto 10px auto;
-  flex-wrap: wrap;
-  max-width: 700px;
-}
-
-.card-indicador {
-  background-color: #FEEDE7;
-  border: 2px outset #fff;
-  padding: 20px;
-  color: rgb(230, 0, 88);
-  min-width: 150px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.card-indicador h4 {
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-.card-indicador p {
-  font-size: 1.6rem;
-  font-weight: bold;
-}
-
-
-/*Gráficos*/
-/* canvas {
-  width: 100px;
-  height: 100px;
-  
-} */
-
-#graficos {
-  max-width: 600px;
-  padding: 20px;
-  background-color: #FEEDE7;
-  border: 2px outset #fff;
-  margin-top: 200px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-#graficoRanking {
-  width: 500px;
-  height: 500px;
-}
-
-#graficoQuiz{
-  display: flex;
-  width: 500px;
-  height: 500px;
-}
-
-#graficos {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  padding: 30px;
-  height: fit-content;
-  width: 400px;
-}
-canvas {
-  border-radius: 10px;
-  max-width: 300px;
-  width: 300px;
-}
-
-
-
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
-
-.header-left a {
-  text-decoration: none;
-  color: white;
-}
-
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border: 2px outset #fff;
-  background-color: #FEEDE7;
-}
-
-.dash-right {
-  display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
-}
-
-.header-left h1 {
-  color: #EA9ABA;
-  margin-left: 25px;
-}
-
-.hello {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hello h3 {
-  color: #EA9ABA;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
-}
-
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: #EA9ABA;
-  border: 2px outset #fff;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white {
-  width: 40%;
-  background-color: white;
-  border: 2px outset #fff;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white h3 {
-  color: #EA9ABA;
-  padding: 0;
-  margin: 0;
-}
-
-.btn-nav h3,
-.btn-logout h3 {
-  margin: 0;
-  padding: 0;
-  cursor: pointer;
-}
-
-.btn-logout {
-  margin: 0;
-  padding: 0;
-  width: 20%;
-  background-color: #EA9ABA;
-  color: white;
-  border: 2px outset #fff;
-  text-align: center;
-  padding: 10px 15px;
-  margin-bottom: 100px;
-  cursor: pointer;
+    display: block;
 }

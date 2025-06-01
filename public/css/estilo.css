@@ -1,21 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
 
-
-body {
-  margin: 0;
-  height: 100vh;
-  font-family: "Pixelify Sans";
-  background-image: url("../assets/imgs/cloud_backgroud.png");
-  background-size: cover;
-
-}
-
-& img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
+/* Cores e Variáveis */
 :root {
+  --primary-bg-color: #FEEDE7;
+  /* Rosa muito claro */
+  --secondary-bg-color: #FFFFFF;
+  /* Branco */
+  --accent-color-light: #EA9ABA;
+  /* Rosa claro/médio */
+  --accent-color-dark: #ef5291;
+  /* Rosa vibrante */
+  --text-color-soft: #7887B0;
+  /* Azul acinzentado suave */
+  --border-outset-color: #fff;
+  /* Branco para bordas outset */
+
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
   --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -23,210 +22,296 @@ body {
   --tamanho-footer: 65px;
 }
 
-.container {
+body {
+  font-family: "Pixelify Sans", sans-serif;
+  background-image: url("../assets/imgs/cloud_backgroud.png");
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  color: var(--text-color-soft);
+
+}
+
+/* Regra geral para imagens: garante que não ultrapassem seus contêineres */
+img {
+  width: 10vh;
+
+
+}
+
+.container_sobre {
   display: flex;
+  justify-content: center;
   width: 80%;
   margin: auto;
 }
 
-.header {
-  height: var(--tamanho-header);
+.container {
+  display: flex;
+  justify-content: center;
+  height: 60px;
+  width: 80%;
+  margin: auto;
 }
 
-.header img {
-  width: 196px;
-  height: 38px;
-  margin-left: -45%;
+/* --- ESTILOS GERAIS PARA JANELAS/CARDS (WINDOWS 95 STYLE) --- */
+/* Esta classe base será aplicada a todos os cards */
+.card-base,
+.card,
+/* O .card já deve ter a estilização base */
+.sobre_mim {
+  background-color: var(--primary-bg-color);
+  /* Rosa muito claro */
+  border: 3px outset var(--accent-color-light);
+  /* Borda com efeito 3D */
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  /* Sombra para profundidade */
+  border-radius: 8px;
+  /* Leve arredondamento */
+  overflow: hidden;
+  /* Garante que elementos internos não vazem */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header-windows {
+  background-color: var(--secondary-bg-color);
+  /* Branco para o header */
+  border-bottom: 2px outset var(--accent-color-light);
+  /* Borda inferior do header */
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 1.4em;
+  color: var(--accent-color-dark);
+  /* Rosa vibrante para o texto do header */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Centraliza o título, se houver apenas um */
+}
+
+.card-header-windows h4 {
+  margin: 0;
+  font-size: 1em;
+  /* Ajusta o tamanho da fonte dentro do h4 */
+}
+
+.button-95 {
+  background-color: var(--primary-bg-color);
+  color: var(--text-color-soft);
+  /* Cor do texto do botão */
+  border: 2px outset var(--border-outset-color);
+  /* Borda branca 3D */
+  padding: 5px 15px;
+  cursor: pointer;
+  /* Alterado para pointer para indicar clicável */
+  font-family: 'Pixelify Sans', sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.button-95:active {
+  border-style: inset;
+  transform: translateY(1px);
+  /* Efeito de pressionado */
+}
+
+input[type="text"],
+input[type="password"],
+select {
+  border: 2px outset var(--accent-color-light);
+  /* Borda 3D para inputs */
+  background-color: var(--secondary-bg-color);
+  /* Fundo branco */
+  padding: 8px 10px;
+  font-family: "Pixelify Sans", sans-serif;
+  color: #333;
+  margin-bottom: 10px;
+  box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.1);
+  /* Sombra interna sutil */
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 2px inset var(--accent-color-dark);
+  /* Borda inset mais escura ao focar */
+}
+
+.botao {
+  background-color: var(--primary-bg-color);
+  border: 2px outset var(--accent-color-light);
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--accent-color-dark);
+  width: 120px;
+  align-self: center;
+  cursor: pointer;
+  font-family: "Pixelify Sans", sans-serif;
+  text-transform: uppercase;
+}
+
+.botao:active {
+  border-style: inset;
+  transform: translateY(1px);
+}
+
+/* --- HEADER --- */
+.header {
+  height: var(--tamanho-header);
+  background-color: var(--primary-bg-color);
+  /* Fundo rosa claro */
+  border-bottom: 3px outset var(--accent-color-light);
+  /* Borda 3D na parte inferior */
+  display: flex;
+  align-items: center;
 }
 
 .header .container {
   justify-content: space-between;
   align-items: center;
   height: 100%;
-
 }
 
-.header a {
-  text-decoration: none;
-  color: #ef5291;
-  font-size: 20px;
-
-}
-
-/* .agora {
-  font-weight: 800;
-  width: 300px;
+.header .titulo {
+  color: var(--accent-color-dark);
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 2.5em;
   display: flex;
-} */
+  align-items: center;
+  gap: 10px;
+}
+
+/* Imagem da logo no header */
+.header .titulo img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
 
 .navbar {
-  /* width: 300px; */
   display: flex;
-  /* align-items: center; */
-  /* justify-content: space-between; */
   list-style: none;
-  gap: 20px;
-  color: #FEEDE7;
-}
-
-.titulo {
-  color: #EA9ABA;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.titulo img {
-  width: 150px;
-}
-
-.header h1 {
+  gap: 25px;
+  padding: 0;
   margin: 0;
 }
 
-.button-95 {
-  background-color: #FEEDE7;
-  color: #ef5291;
-  border: 2px outset #fff;
-  padding: 5px 15px;
-  cursor: default;
-  font-family: 'Pixelify sans';
+.navbar li a {
+  text-decoration: none;
+  color: var(--accent-color-dark);
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
-.button-95:active {
-  border-style: inset;
+.navbar li a:hover {
+  color: var(--text-color-soft);
 }
 
-.button-95.large {
-  padding: 15px 40px;
-  font-size: 1.8em;
+/*Cor da barrinha de separação*/
+.navbar li {
+  color: var(--accent-color-light);
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
-/* BANNER */
+.navbar .agora a {
+  color: var(--text-color-soft);
+}
 
+/* --- BANNER --- */
 .banner {
   height: var(--tamanho-banner);
-  color: white;
-
-  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 100px;
+  position: relative;
 }
 
 .banner .container {
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100%;
 }
 
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
+/* Logo no banner */
+#logo_inside {
+  width: 500px;
 
-.banner .container span {
-  font-weight: 800;
-}
-
-.banner .container button {
-  display: flex;
-  background-color: #CBD9E6;
-  width: 240px;
-  height: 40px;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 8px;
-  font-family: "Pixelify Sans";
-
+  height: auto;
+  margin-bottom: 20px;
+  filter: drop-shadow(4px 4px 5px rgba(0, 0, 0, 0.4));
 }
 
 
+/* --- SEÇÃO SOBRE MIM (CARD PRINCIPAL) --- */
 .social {
   display: flex;
-  justify-items: center;
-  margin-bottom: 30px;
+  justify-content: center;
+  margin-bottom: 60px;
 }
 
 .social .container {
-  display: flex;
   justify-content: center;
-  gap: 48px;
-
-}
-
-.social img {
-  margin-top: 30px;
-  width: 206px;
-  height: 206px;
-  padding: 24px;
-  
-
-}
-
-.box img {
-  width: 170px;
-  box-shadow: #EA9ABA;
-}
-
-.social .container .boxes {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-  align-items: center;
-}
-
-.social .container .sobre_mim {
-  display: flex;
-  border: 2px outset #ffff;
-  flex-direction: column;
-  align-self: auto;
-}
-
-.social p {
-  text-align: center;
-
 }
 
 .sobre_mim {
-  background-color: #FEEDE7;
-  width: 960px;
-  height: 433px;
-
+  width: 900px;
+  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .sobre_mim_titulo {
+  /* Este pode ser renomeado para .card-header-windows no HTML do index, ou estilizado separadamente */
+  background-color: var(--secondary-bg-color);
+  border-bottom: 2px outset var(--accent-color-light);
   height: 44px;
-  background-color: #FFFFFF;
-  border: 2px outset #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
 }
 
 .sobre_mim_titulo h4 {
-  margin-top: 10px;
-  padding-left: 24px;
-  color: #ef5291;
-  font-size: 20px;
+  margin: 0;
+  color: var(--accent-color-dark);
+  font-size: 1.4em;
 }
 
 .sobre_mim_texto {
   display: flex;
-  gap: 90px;
-  padding-left: 100px;
+  gap: 50px;
+  padding: 30px;
+  align-items: center;
+}
+
+.sobre_mim_texto img {
+  width: 180px;
+  /* Ajuste o tamanho da sua foto */
+  height: 180px;
+  border: 2px outset var(--accent-color-light);
+  border-radius: 5px;
+  object-fit: cover;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
 }
 
 .sobre_mim_texto p {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  color: #7887B0;
+  color: var(--text-color-soft);
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: left;
+  margin: 0;
 }
 
 
-/*Div music e cards*/
-
+/* --- SEÇÃO MÚSICA (CARDS DE CONTEÚDO) --- */
 .music {
   padding: 60px 20px;
   text-align: center;
@@ -235,8 +320,9 @@ body {
 
 .music h2 {
   font-size: 4em;
-  margin-bottom: 30px;
-  color: #ef5291;;
+  margin-bottom: 40px;
+  color: var(--accent-color-dark);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 .music-cards {
@@ -245,308 +331,83 @@ body {
   gap: 30px;
   max-width: 960px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .music-cards .card-95 {
-  background-color: #FEEDE7;
-  border: 2px outset #fff;
   width: 250px;
+  height: 180px;
+  background-color: var(--primary-bg-color);
+  border: 3px outset var(--accent-color-light);
+  border-radius: 8px;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .music-cards .card-header {
-  background-color: #FFFFFF;
-  color: #ef5291;
+  /* Para os cards de música, pode ser renomeado para .card-header-windows */
+  background-color: var(--secondary-bg-color);
+  color: var(--accent-color-dark);
   padding: 10px;
-  border-bottom: 1px outset #fff;
+  border-bottom: 2px outset var(--accent-color-light);
   font-weight: bold;
   font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .music-cards .card-body {
-  padding: 20px;
-  min-height: 100px;
-}
-
-.music-cards .card-body h4 {
-  color: #7887B0;
-}
-
-.music-cards .card-body p {
-  color: #7887B0;
-
-}
-
-.audio-player {
-  text-align: left;
-}
-
-
-.card-95 {
-  width: 250px;
-  height: 180px;
-  background-color: #f4f4f4;
-  border: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  overflow: hidden;
-  transition: transform 0.3s ease, height 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-header {
-  background-color: #c9d6ff;
-  color: #000;
-  padding: 10px;
-  font-weight: bold;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-}
-
-.card-body {
-  padding: 10px;
-  transition: max-height 0.4s ease, opacity 0.4s ease;
+  padding: 15px;
+  min-height: 0;
   max-height: 60px;
   overflow: hidden;
   opacity: 0.8;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  color: var(--text-color-soft);
+  text-align: left;
+  flex-grow: 1;
 }
 
-.card-95:hover {
+.music-cards .card-body p {
+  margin-bottom: 5px;
+  font-size: 0.95em;
+}
+
+.music-cards .card-body h4 {
+  color: var(--accent-color-dark);
+  margin-top: 10px;
+  font-size: 1em;
+}
+
+.music-cards .card-95:hover {
   transform: scale(1.05);
   height: 250px;
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4);
 }
 
-.card-95:hover .card-body {
-  max-height: 120px;
+.music-cards .card-95:hover .card-body {
+  max-height: 150px;
   opacity: 1;
 }
 
 
-/* FOOTER */
-
+/* --- FOOTER --- */
 .footer {
-  height: 150px;
-  color: #fff;
+  background-color: var(--primary-bg-color);
+  color: var(--text-color-soft);
   display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
-
-/* LOGIN */
-
-.login {
-  height: var(--tamanho-login);
-  background-size: cover;
-}
-
-.login .container {
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-}
-
-.card_login_titulo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 44px;
-  background-color: #FFFFFF;
-  border: 2px outset #fff
-}
-
-.card_login_titulo h4 {
-  padding-left: 24px;
-}
-
-.card {
-  width: 572px;
-  height: 343px;
-  background-color: #FEEDE7;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  color: palevioletred;
-  flex-direction: column;
-  padding: 0;
-  border: 2px outset #fff
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 30px;
-}
-
-.card-cadastro {
-  height: 450px;
-}
-
-.card_cadastro_titulo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 44px;
-  background-color: #FFFFFF;
-  border: 2px outset #fff
-}
-
-.card_cadastro_titulo h4 {
-  padding-left: 24px;
-}
-
-.formulario {
-  display: flex;
-  height: 90%;
-  width: 80%;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-.formulario span {
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.formulario input {
-  border: 2px outset #fff;
+  font-size: 0.9em;
+  font-family: "Pixelify Sans", sans-serif;
+  border-top: 3px outset var(--accent-color-light);
   text-align: center;
-  margin: 0;
-}
-
-.formulario select {
-  border: 2px solid #EA9ABA;
-  background-color: white;
-  color: gray;
-  height: 36px;
-  text-align: center;
-  margin: 0;
-}
-
-.campo {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding: 5px 0;
-}
-
-.botao {
-  cursor: pointer;
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border: 2px solid #EA9ABA;
-  font-weight: 600;
-  font-size: 18px;
-  color: #EA9ABA;
-  background-color: #fff;
-  width: 120px;
-  height: 30px;
-  align-self: center;
-  margin-top: 20px;
-  background-color: #FEEDE7;
-  border: 2px outset #fff;
-  padding: 5px 15px;
-  cursor: default;
-  text-align: center;
-}
-
-.loading-div {
-  width: 50px;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-#div_erros_login {
-  display: none
-}
-
-/* Cadastro */
-
-.alerta_erro {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.card_erro {
-  display: none;
-  background-color: #fff;
-  color: black;
-  width: 230px;
-  position: fixed;
-  border-radius: 4px;
-  border: #EA9ABA 3px solid;
-  padding: 10px;
-  margin-right: 10%;
-}
-
-.card_erro #mensagem_erro {
-  font-weight: 500;
-  font-size: 20px;
-}
-
-.formulario .tipo_campo {
-  font-size: 20px;
-  font-weight: 600 !important;
-}
-
-.formulario {
-  display: flex;
-  flex-direction: column;
-}
-
-input {
-  margin-bottom: 10px;
-  border: 2px solid #EA9ABA;
-  padding: 10px;
-  text-align: center;
-}
-
-.btn {
-  font-family: "Barlow", sans-serif;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #EA9ABA;
-  background-color: white;
-  width: 120px;
-  align-self: center;
-  margin-top: 5px;
-}
-
-.loading-div {
-  width: 50px;
-  margin: auto;
-  display: none;
-}
-
-.loading-div img {
-  height: 50px;
-  width: 50px;
-}
-
-
-.footer {
-  display: flex;
-  flex-direction: column;
-  color: #333;
-  padding: 20px 0;
-  font-family: "Pixelify Sans";
 }
 
 .footer-content {
@@ -554,26 +415,29 @@ input {
   justify-content: space-around;
   align-items: center;
   max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
+  margin-top: 4vh;
 }
 
 .footer-brand h3 {
   margin: 0;
   font-size: 1.5em;
+  color: var(--accent-color-dark);
 }
 
 .footer-social a {
-  font-family: "Barlow", sans-serif;
   display: inline-block;
-  margin-right: 10px;
+  margin: 0 8px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .footer-social img {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   vertical-align: middle;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+  filter: pixelate(5px);
 }
 
 .footer-social img:hover {
@@ -585,34 +449,215 @@ input {
   padding: 0;
   margin: 0;
   display: flex;
-}
-
-.footer-nav li {
-  margin-left: 20px;
-}
-
-.footer-nav li:first-child {
-  margin-left: 0;
+  gap: 15px;
 }
 
 .footer-nav a {
-  color: #333;
+  color: var(--accent-color-dark);
   text-decoration: none;
-  opacity: 0.7;
+  font-weight: bold;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
 .footer-nav a:hover {
   opacity: 1;
+  color: var(--text-color-soft);
 }
 
-.footer-brand h3,
-.footer-nav a {
-  font-family: "Pixelify Sans";
-  font-size: 1.8em;
+.footer .container h4 {
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: var(--text-color-soft);
 }
 
-.footer-social img {
-  filter: pixelate(5px);
+/* --- LOGIN / CADASTRO --- */
+.login {
+  height: var(--tamanho-login);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.login .container {
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* Estilo para todos os cards de login/cadastro */
+.card {
+  width: 572px;
+  padding: 0;
+}
+
+.card-login {
+  height: 343px;
+}
+
+/* Altura específica para o card de cadastro */
+.card-cadastro {
+  height: 450px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.formulario span {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--accent-color-dark);
+  margin-bottom: 5px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+/* --- ALERTA DE ERRO (Revisado) --- */
+.alerta_erro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  display: none;
+}
+
+.card_erro {
+  background-color: var(--primary-bg-color);
+  border: 3px outset var(--accent-color-dark);
+  border-radius: 8px;
+  width: 450px;
+  color: var(--accent-color-dark);
+  padding: 0;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card-error-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondary-bg-color);
+  padding: 5px 10px;
+  border-bottom: 2px outset var(--accent-color-dark);
+  cursor: default;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--accent-color-dark);
+}
+
+.card-error-title {
+  margin-left: 5px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.window-control-btn {
+  width: 22px;
+  height: 22px;
+  border: 2px outset var(--accent-color-light);
+  background-color: var(--primary-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9em;
+  cursor: pointer;
+  line-height: 1;
+  color: var(--accent-color-dark);
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.window-control-btn:active {
+  border-style: inset;
+}
+
+.error-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+}
+
+.error-icon {
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+#mensagem_erro {
+  font-size: 1.1em;
+  line-height: 1.4;
+  color: var(--accent-color-dark);
+  flex-grow: 1;
+}
+
+.action-buttons-error {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  border-top: 2px outset var(--accent-color-dark);
+  background-color: var(--secondary-bg-color);
+}
+
+.action-button-error {
+  background-color: var(--primary-bg-color);
+  border: 3px outset var(--accent-color-dark);
+  padding: 8px 20px;
+  font-size: 1em;
+  color: var(--accent-color-dark);
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: bold;
+}
+
+.action-button-error:active {
+  border-style: inset;
+  transform: translateY(1px);
+}
+
+/* Oculta div_erros_login (não usada com o novo alerta) */
+#div_erros_login {
+  display: none;
+}
+
+/* Estilos para loading gif (se usado) */
+.loading-div {
+  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.loading-div img {
+  height: 50px;
+  width: 50px;
 }

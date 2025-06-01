@@ -94,7 +94,7 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
     resultadoPlaylist = "dance";
   } else if (q1 === "estressado" || q3 === "relaxar") {
     resultadoPlaylist = "relax";
-  } else if (q1 === "pensativo" || q2 === "profundo") {
+  } else if (q1 === "pensativo" || q2 === "intenso") {
     resultadoPlaylist = "reflexao";
   }
 

@@ -8,19 +8,16 @@
 
     <title>Inside Music | Login</title>
 
-
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/imgs/logo_inside.png">
+    <link rel="icon" href="./assets/imgs/IM_logo.png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
 </head>
 
 <body>
 
-    <!--Header-->
-
     <div class="header">
         <div class="container">
-            <h1 class="titulo">Inside Music</h1>
+            <h1 class="titulo"><img src="./assets/imgs/IM_logo.png" alt=""></h1>
             <ul class="navbar">
                 <li>
                     <a href="index.html">Inicial</a>
@@ -38,15 +35,29 @@
 
 
     <div class="login">
-        <div class="alerta_erro">
+        <div class="alerta_erro" id="alertaErroWrapper">
             <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+                <div class="card-error-header">
+                    <span class="card-error-title">Error</span>
+                    <div class="window-controls">
+                        <span class="window-control-btn">-</span>
+                        <span class="window-control-btn">□</span>
+                        <span class="window-control-btn" onclick="fecharAlertaErro()">X</span>
+                    </div>
+                </div>
+                <div class="error-content">
+                    <div class="error-icon" style="background-image: url('./assets/imgs/heart_bandaid.png');"></div>
+                    <span id="mensagem_erro"></span>
+                </div>
+                <div class="action-buttons-error">
+                    <button class="action-button-error" onclick="fecharAlertaErro()">Ignore</button>
+                    <button class="action-button-error" onclick="fecharAlertaErro()">OK</button>
+                </div>
             </div>
         </div>
         <div class="container">
             <div class="card card-login">
-                <div class="card_login_titulo">
-                    <h4>Login</h4>
+                <div class="card-header-windows"> <h4>Login</h4>
                 </div>
                 <div class="formulario">
                     <div class="campo">
@@ -61,7 +72,7 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./jogo-projeto/img/giphy_gif (200×200).gif" id="loading_gif">
+                    <img src="./assets/imgs/loading.gif" id="loading_gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -69,35 +80,50 @@
         </div>
     </div>
 
-    <!--footer-->
     <div class="footer">
         <div class="container">
             <h4>Ana Karoline &hearts; Todos os direitos reservados &copy; 2025</h4>
         </div>
     </div>
-    <!--footer-->
-
-</body>
+    </body>
 
 </html>
 
 <script>
+    // Função para mostrar o alerta de erro
+    function mostrarAlertaErro(mensagem) {
+        const alertaErroWrapper = document.getElementById('alertaErroWrapper');
+        const mensagemErroSpan = document.getElementById('mensagem_erro');
+
+        if (alertaErroWrapper && mensagemErroSpan) {
+            mensagemErroSpan.innerHTML = mensagem;
+            alertaErroWrapper.style.display = 'flex'; // Torna visível
+        }
+    }
+
+    // Função para fechar o alerta de erro
+    function fecharAlertaErro() {
+        const alertaErroWrapper = document.getElementById('alertaErroWrapper');
+        if (alertaErroWrapper) {
+            alertaErroWrapper.style.display = 'none'; // Esconde
+        }
+    }
 
 
     function entrar() {
 
-        const container_loading_gif = document.getElementById('loading_gif');
+        
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mostrarAlertaErro("Todos os campos devem ser preenchidos!"); 
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            
+            setTimeout(() => fecharAlertaErro(), 5000);
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -115,12 +141,13 @@
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
+            //alerta com card estilo win 95
             if (resposta.ok) {
                 console.log(resposta);
-                // console.log("JSON recebido no login:", json);
-                cardErro.style.display = "block"
-                mensagem_erro.innerHTML = "Login realizado com sucesso";
-                loading_gif.style.display = 'block';
+                mostrarAlertaErro("Login realizado com sucesso!"); 
+
+               document.getElementById('div_aguardar').style.display = 'flex';
+
 
                 resposta.json().then(json => {
                     console.log("JSON recebido do servidor:", json);
@@ -132,7 +159,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        
+
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
@@ -141,8 +168,8 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-                cardErro.style.display = "block"
-                mensagem_erro.innerHTML = "Erro ao realizar o login, usuário ou senha inválidos";
+                mostrarAlertaErro("Erro ao realizar o login, usuário ou senha inválidos.");
+        
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
@@ -151,17 +178,18 @@
 
         }).catch(function (erro) {
             console.log(erro);
+            mostrarAlertaErro("Erro de conexão com o servidor. Tente novamente mais tarde."); 
         })
 
         return false;
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    
 
     function finalizarAguardar() {
         console.log("Finalizou o carregamento");
+        
+        document.getElementById('div_aguardar').style.display = 'none';
     }
 
 </script>

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Player de Música</title>
-  <link rel="stylesheet" href="confort.css">
+  <link rel="stylesheet" href="relax.css">
 </head>
 <body>
   <div class="player">
     <h2 id="titulo">Playlist Relax</h2>
-    <audio id="audio" src="../sounds/Ludovico-Einaudi-Nuvole-Bianche.mp3"></audio>
+    <audio id="audio" src="../music/True-Love-relax.mp3"></audio>
 
     <!-- Barra de progresso -->
     <div class="progresso-container" onclick="mudarProgresso(event)">
@@ -30,12 +30,12 @@
 
     <!-- Lista de reprodução -->
     <ul id="lista-musicas">
-      <li onclick="selecionarMusica(0)">🎵 Chopin - Nocturne in Eb Major</li>
-      <li onclick="selecionarMusica(1)">🎵 Claude Debussy - Clair de Lune</li>
-      <li onclick="selecionarMusica(2)">🎵 Ludovico Einaudi - Nuvole Bianche</li>
+      <li onclick="selecionarMusica(0)">🎵 Better Together</li>
+      <li onclick="selecionarMusica(1)">🎵 isn't She lovely</li>
+      <li onclick="selecionarMusica(2)">🎵 True Love</li>
     </ul>
     <button class="button-95" onclick="window.location.href='/dashboard/cards.html'"">Voltar</button>
   </div>
-  <script src="confort.js"></script>
+  <script src="relax.js"></script>
 </body>
 </html>

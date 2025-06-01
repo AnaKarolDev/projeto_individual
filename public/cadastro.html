@@ -2,179 +2,198 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Inside Music</title>
+    <title>Inside Music</title>
 
-  <!-- <script src="./js/sessao.js"></script> -->
-
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="../public/assets/imgs/logo_inside.png" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="stylesheet" href="./css/estilo.css" />
+    <link rel="icon" href="../public/assets/imgs/logo_inside.png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<!-- <body onload="listar()"> -->
-<!--header inicio-->
-<div class="header">
-  <div class="container">
-    <h1 class="titulo">Inside Music</h1>
-    <ul class="navbar">
-      <li>
-        <a href="index.html">Inicial</a>
-      </li>
-      <li>|</li>
-      <li>
-        <a href="login.html">Login</a>
-      </li>
-      <li class="agora">
-        <a href="#">Cadastro</a>
-      </li>
-    </ul>
-  </div>
-</div>
-<!--header fim-->
-
-<div class="login">
-  <div class="alerta_erro">
-    <div class="card_erro" id="cardErro">
-      <span id="mensagem_erro"></span>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo"><img src="./assets/imgs/IM_logo.png" alt=""></h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Inicial</a>
+                </li>
+                <li>|</li>
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+                <li class="agora">
+                    <a href="#">Cadastro</a>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="card card-cadastro">
-      <div class="card_cadastro_titulo">
-        <h4>Cadastre-se</h4>
-      </div>
-      <div class="formulario">
+    <div class="login">
+        <div class="alerta_erro" id="alertaErroWrapper">
+            <div class="card_erro" id="cardErro">
+                <div class="card-error-header">
+                    <span class="card-error-title">Error</span>
+                    <div class="window-controls">
+                        <span class="window-control-btn">-</span>
+                        <span class="window-control-btn">□</span>
+                        <span class="window-control-btn" onclick="fecharAlertaErro()">X</span>
+                    </div>
+                </div>
+                <div class="error-content">
+                    <div class="error-icon" style="background-image: url('./assets/imgs/heart_bandaid.png');"></div>
+                    <span id="mensagem_erro"></span>
+                </div>
+                <div class="action-buttons-error">
+                    <button class="action-button-error" onclick="fecharAlertaErro()">Ignore</button>
+                    <button class="action-button-error" onclick="fecharAlertaErro()">OK</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card card-cadastro">
+                <div class="card-header-windows">
+                    <h4>Cadastre-se</h4>
+                </div>
+                <div class="formulario">
 
-        <div class="campo">
-          <span>Nome:</span>
-          <input id="nome_input" type="text" placeholder="Seu nome" />
-        </div>
+                    <div class="campo">
+                        <span>Nome:</span>
+                        <input id="nome_input" type="text" placeholder="Seu nome" />
+                    </div>
 
-        <div class="campo">
-          <span>E-mail:</span>
-          <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+                    <div class="campo">
+                        <span>E-mail:</span>
+                        <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+                    </div>
+                    <div class="campo">
+                        <span>Senha:</span>
+                        <input id="senha_input" type="password" placeholder="******" />
+                    </div>
+                    <div class="campo">
+                        <span>Confirmação da Senha:</span>
+                        <input id="confirmacao_senha_input" type="password" placeholder="******" />
+                    </div>
+                    <button class="botao" onclick="cadastrar()">Cadastrar</button>
+                </div>
+                <div id="div_erros_login"></div>
+            </div>
         </div>
-        <div class="campo">
-          <span>Senha:</span>
-          <input id="senha_input" type="password" placeholder="******" />
-        </div>
-        <div class="campo">
-          <span>Confirmação da Senha:</span>
-          <input id="confirmacao_senha_input" type="password" placeholder="******" />
-        </div>
-        <button class="botao" onclick="cadastrar()">Cadastrar</button>
-      </div>
-      <!-- <div id="div_aguardar" class="loading-div">
-          <img src="./assets/circle-loading.gif" id="loading-gif" />
-        </div> -->
-
-      <div id="div_erros_login"></div>
     </div>
-  </div>
-</div>
 
-<!--footer inicio-->
-<div class="footer">
-  <div class="container">
-    <h4>Ana Karoline &hearts; Todos os direitos reservados &copy; 2025</h4>
-  </div>
-</div>
-<!--footer fim-->
-</body>
+    <div class="footer">
+        <div class="container">
+            <h4>Ana Karoline &hearts; Todos os direitos reservados &copy; 2025</h4>
+        </div>
+    </div>
+    </body>
 
 </html>
 
 <script>
+    // Função para mostrar o alerta de erro (adicionada para consistência)
+    function mostrarAlertaErro(mensagem) {
+        const alertaErroWrapper = document.getElementById('alertaErroWrapper');
+        const mensagemErroSpan = document.getElementById('mensagem_erro');
 
-  function cadastrar() {
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
-    var nome = nome_input.value;
-    var email = email_input.value;
-    var senha = senha_input.value;
-    var confirmacaoSenha = confirmacao_senha_input.value;
-
-
-    // Verificando se há algum campo em branco
-    if (
-      nome == "" ||
-      email == "" ||
-      senha == "" ||
-      confirmacaoSenha == ""
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
-
-      finalizarAguardar();
-      return false;
-    } else {
-      setInterval(sumirMensagem, 5000);
+        if (alertaErroWrapper && mensagemErroSpan) {
+            mensagemErroSpan.innerHTML = mensagem;
+            alertaErroWrapper.style.display = 'flex'; // Torna visível
+        }
     }
 
-    if (nome.length <= 1) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Insira um nome maior)";
-      finalizarAguardar();
-      return false;
-    } else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Insira um email válido!)";
-      finalizarAguardar();
-      return false;
-    } else if (senha.length < 6) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(Insira um senha válida!)";
-      finalizarAguardar();
-      return false;
-    } else if (confirmacaoSenha != senha) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML = "(As senhas devem ser iguais!)";
-      finalizarAguardar();
-      return false;
+    // Função para fechar o alerta de erro (adicionada para consistência)
+    function fecharAlertaErro() {
+        const alertaErroWrapper = document.getElementById('alertaErroWrapper');
+        if (alertaErroWrapper) {
+            alertaErroWrapper.style.display = 'none'; // Esconde
+        }
     }
 
-    fetch("/jogador/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        nome: nome,
-        email: email,
-        senha: senha
+    function cadastrar() {
+        var nome = nome_input.value;
+        var email = email_input.value;
+        var senha = senha_input.value;
+        var confirmacaoSenha = confirmacao_senha_input.value;
 
-      }),
-    }).then(async function (resposta) {
-      if (resposta.ok) {
-        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o login...";
-        cardErro.style.display = "block";
+        // Verificando se há algum campo em branco
+        if (
+            nome == "" ||
+            email == "" ||
+            senha == "" ||
+            confirmacaoSenha == ""
+        ) {
+            mostrarAlertaErro("Todos os campos devem ser preenchidos!"); // Usando a nova função
+            // cardErro.style.display = "block"; // Removido
+            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)"; // Removido
+            // finalizarAguardar(); // Se tiver uma função finalizarAguardar, certifique-se que ela lide com o display do loading gif
+            return false;
+        }
 
-        setTimeout(() => {
-          window.location = "login.html";
-        }, 2000);
+        if (nome.length <= 1) {
+            mostrarAlertaErro("Insira um nome maior."); // Usando a nova função
+            // finalizarAguardar(); // Removido
+            return false;
+        } else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
+            mostrarAlertaErro("Insira um e-mail válido!"); // Usando a nova função
+            // finalizarAguardar(); // Removido
+            return false;
+        } else if (senha.length < 6) {
+            mostrarAlertaErro("A senha deve ter pelo menos 6 caracteres!"); // Usando a nova função
+            // finalizarAguardar(); // Removido
+            return false;
+        } else if (confirmacaoSenha != senha) {
+            mostrarAlertaErro("As senhas devem ser iguais!"); // Usando a nova função
+            // finalizarAguardar(); // Removido
+            return false;
+        }
 
-      } else {
-        const texto = await resposta.text();
-        throw new Error(texto);
-      }
-    })
-      .catch(function (erro) {
-        console.error("Erro na requisição:", erro);
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = erro.message;
-      });
+        fetch("/jogador/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nome: nome,
+                email: email,
+                senha: senha
+            }),
+        }).then(async function (resposta) {
+            if (resposta.ok) {
+                mostrarAlertaErro("Cadastro realizado com sucesso! Redirecionando para o login..."); // Usando a nova função
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, 2000);
+
+            } else {
+                const texto = await resposta.text();
+                throw new Error(texto);
+            }
+        })
+            .catch(function (erro) {
+                console.error("Erro na requisição:", erro);
+                mostrarAlertaErro("Erro ao cadastrar: " + erro.message); // Usando a nova função
+            });
 
 
-    return false;
-  }
+        return false;
+    }
 
-  function sumirMensagem() {
-    cardErro.style.display = "none";
-  }
+    // A função sumirMensagem foi substituída pela lógica de fecharAlertaErro
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none";
+    // }
+
+    // Adicionando uma função finalizarAguardar para ser consistente (se você tiver um gif de loading no cadastro)
+    function finalizarAguardar() {
+        console.log("Finalizou o carregamento (cadastro)");
+        // Se você tiver um gif de loading no cadastro, pode escondê-lo aqui
+        // const loadingGif = document.getElementById('loading-gif');
+        // if (loadingGif) {
+        //     loadingGif.style.display = 'none';
+        // }
+    }
 </script>
