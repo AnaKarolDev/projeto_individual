@@ -1,14 +1,17 @@
 INSIDE MUSIC
 
-![image](https://github.com/user-attachments/assets/16c2621f-1a33-40c5-bdb1-cc997736cfd6)
-![image](https://github.com/user-attachments/assets/3e062f14-cd2e-4c87-9829-380984290334)
-![image](https://github.com/user-attachments/assets/1a36c40b-636b-44cd-8d64-f1faff05cc34)
-![image](https://github.com/user-attachments/assets/59c19ac9-7ec4-488b-9910-1fcc2060c870)
 
 
-É um projeto musical une música e um design retro!
+![image](https://github.com/user-attachments/assets/efd8020e-c47c-400f-ac77-ac39a70dc183)
+![image](https://github.com/user-attachments/assets/a526bd61-022b-41b2-937f-087a89ee7ac0)
+![image](https://github.com/user-attachments/assets/3b949e21-6157-4b1b-9704-58dc7c29229b)
+![image](https://github.com/user-attachments/assets/764f7139-981d-4fcc-84ae-0740b452df75)
+![image](https://github.com/user-attachments/assets/f992d276-c439-4922-876b-059f749376c1)
 
 
+
+É um projeto musical que une música, um design retro em pixel art e jogos de pares musicais e ainda 
+uma indicação de playlist de acordo com seu humor naquele dia! 
 
 # Como usar
 
