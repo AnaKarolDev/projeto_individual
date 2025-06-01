@@ -31,7 +31,7 @@ app.use(cors());
 app.use("/index", indexRouter); 
 app.use("/jogador", jogadorRouter);
 app.use("/jogoMemoria", jogoMemoriaRouter);
-// app.use("/pontos", pontosRouter);
+app.use("/pontos", pontosRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

@@ -6,7 +6,6 @@ const perguntas = [
       { texto: "Triste ou desanimado(a)", valor: "triste" },
       { texto: "Animado(a)", valor: "animado" },
       { texto: "Estressado(a)", valor: "estressado" },
-      { texto: "Romântico(a)", valor: "romantico" },
       { texto: "Pensativo(a)", valor: "pensativo" }
     ]
   },
@@ -17,7 +16,6 @@ const perguntas = [
       { texto: "Calmo e suave", valor: "calmo" },
       { texto: "Dançante", valor: "dancante" },
       { texto: "Intenso e emocional", valor: "intenso" },
-      { texto: "Profundo e impactante", valor: "profundo" },
       { texto: "Leve e divertido", valor: "leve" }
     ]
   },
@@ -26,7 +24,6 @@ const perguntas = [
     texto: "3. O que você gostaria que a música fizesse por você?",
     opcoes: [
       { texto: "Melhorar meu humor", valor: "melhorar" },
-      { texto: "Manter minha vibe", valor: "manter" },
       { texto: "Me ajudar a relaxar", valor: "relaxar" },
       { texto: "Me fazer refletir", valor: "pensar" },
       { texto: "Curar o coração", valor: "curar" }
@@ -81,21 +78,24 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
   });
 
   if (!todasRespondidas) {
-    alert("Responda todas as perguntas!");
-    return;
+    alerta.innerText = "Responda todas as perguntas!";
+    setTimeout(function () {
+      alerta.style.display = "none";
+    }, 3000);
+    return
   }
 
   const { q1, q2, q3 } = respostas;
 
   if (q1 === "triste" || q3 === "curar") {
-    window.location.href = "confort.html";
+    window.location.href = "./playlist/confort.html";
   } else if (q1 === "animado" && q2 === "dancante") {
-    window.location.href = "dance.html";
+    window.location.href = "./playlist/dance.html";
   } else if (q1 === "estressado" || q3 === "relaxar") {
-    window.location.href = "zen.html";
+    window.location.href = "./playlist/relax.html";
   } else if (q1 === "pensativo" || q2 === "profundo") {
-    window.location.href = "reflexao.html";
-  }else {
+    window.location.href = ".//playlist/reflexao.html";
+  } else {
     window.location.href = "sugestao.html";
   }
 });

@@ -147,7 +147,7 @@ body {
 }
 
 .card_jogos .titulo-legenda {
-  color: white;
+  color: #e6005a;
   font-weight: 600;
   width: fit-content;
   margin: 10px 20px;
@@ -394,6 +394,7 @@ canvas {
 .btn-logout h3 {
   margin: 0;
   padding: 0;
+  cursor: pointer;
 }
 
 .btn-logout {

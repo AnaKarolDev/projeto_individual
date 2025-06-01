@@ -6,7 +6,7 @@
 body {
   font-family: 'Pixelify sans';
   background-size: cover;
-  background-image: url("/public/jogo-projeto/img/clouds_backgrounds.jpeg");
+  background-image: url("../img/clouds_backgrounds.jpeg");
   color: #ef5291;
   display: flex;
   height: 100vh;

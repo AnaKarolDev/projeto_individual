@@ -128,7 +128,7 @@ h1.game-title {
 }
 
 /* Estilos para o texto "Tentativas" */
-p.attempts-label {
+.attempts-label {
     font-size: 1.1em;
     text-align: center;
     margin-bottom: 5px;
@@ -172,22 +172,13 @@ p.attempts-count {
     margin-top: 10px; 
 }
 
-/* body {
-    font-family: 'MS Sans Serif', sans-serif;
-    background-color: #FEEDE7; 
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    box-sizing: border-box; 
-} */
 
 .window-border {
     background-color: #FEEDE7; 
     border: 2px solid #EA9ABA;
     padding: 20px; 
     margin-bottom: 20px; 
+    margin-top: 50px;
     border: 2px outset #fff
 }
 
@@ -250,7 +241,7 @@ h1.game-title {
 
 .attempts{
     display: flex;
-    justify-items: baseline;
+    justify-content: center;
 
 }
 p.attempts-label {

@@ -44,9 +44,9 @@
   </div>
   <div class="container">
     <div class="card card-cadastro">
-                <div class="card_cadastro_titulo">
-                <h4>Cadastre-se</h4>
-                </div>
+      <div class="card_cadastro_titulo">
+        <h4>Cadastre-se</h4>
+      </div>
       <div class="formulario">
 
         <div class="campo">
@@ -116,7 +116,7 @@
       setInterval(sumirMensagem, 5000);
     }
 
-    if (nome.length <= 1) { 
+    if (nome.length <= 1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "(Insira um nome maior)";
       finalizarAguardar();
@@ -151,24 +151,24 @@
 
       }),
     }).then(async function (resposta) {
-  if (resposta.ok) {
-    mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o login...";
-    cardErro.style.display = "block";
+      if (resposta.ok) {
+        mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para o login...";
+        cardErro.style.display = "block";
 
-    setTimeout(() => {
-      window.location = "login.html";
-    }, 2000);
+        setTimeout(() => {
+          window.location = "login.html";
+        }, 2000);
 
-  } else {
-    const texto = await resposta.text();
-    throw new Error(texto);
-  }
-})
-.catch(function (erro) {
-  console.error("Erro na requisição:", erro);
-  cardErro.style.display = "block";
-  mensagem_erro.innerHTML = erro.message;
-});
+      } else {
+        const texto = await resposta.text();
+        throw new Error(texto);
+      }
+    })
+      .catch(function (erro) {
+        console.error("Erro na requisição:", erro);
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = erro.message;
+      });
 
 
     return false;

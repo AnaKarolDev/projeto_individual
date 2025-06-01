@@ -1,21 +1,26 @@
-const gameContainer = document.querySelector('.game-grid');
-const attemptsDisplay = document.querySelector('.attempts-count');
+const containerDoJogo = document.querySelector('.game-grid');
+const exibicaoTentativas = document.querySelector('.attempts-count');
+const exibicaoAcertos = document.querySelector('.acertos-count');
+const exibicaoErros = document.querySelector('.erros-count');
 
-const clickSound = document.getElementById('clickSound');
-const matchSound = document.getElementById('matchSound');
-const noMatchSound = document.getElementById('noMatchSound');
-const winSound = document.getElementById('winSound');
-const victoryMusic = document.getElementById('victoryMusic');
-const victoryGifContainer = document.getElementById('victoryGifContainer');
-const closeVictoryGifButton = document.getElementById('closeVictoryGif');
+const somClique = document.getElementById('clickSound');
+const somAcerto = document.getElementById('matchSound');
+const somErro = document.getElementById('noMatchSound');
+const somVitoria = document.getElementById('winSound');
+const musicaFundo = document.getElementById('backgroundMusic');
+const musicaVitoria = document.getElementById('victoryMusic');
+const containerGifVitoria = document.getElementById('victoryGifContainer');
+const botaoFecharGifVitoria = document.getElementById('closeVictoryGif');
+const botaoPlay = document.getElementById('playButton');
 
-let cards = [];
-let flippedCards = [];
-let matchedPairs = 0;
-let attempts = 0;
+let cartas = [];
+let cartasViradas = [];
+let paresCorretos = 0;
+let tentativas = 0;
+let erros = 0;
 
 // Pares de cartas
-const cardPairsData = [
+const paresCartas = [
     { id: 1, tipo: "instrumento", valor: "Guitarra", simbolo: "🎸" },
     { id: 1, tipo: "instrumento", valor: "Guitarra", simbolo: "🎸" },
     { id: 2, tipo: "nota", valor: "Dó", simbolo: "🎵" },
@@ -28,208 +33,194 @@ const cardPairsData = [
 
 // Música de fundo
 document.addEventListener('DOMContentLoaded', function () {
-    const backgroundMusic = document.getElementById('backgroundMusic');
-    const playButton = document.getElementById('playButton');
 
-    if (backgroundMusic && playButton) {
-        playButton.addEventListener('click', function () {
-            if (backgroundMusic.paused) {
-                backgroundMusic.play().catch(error => {
-                    console.error("Erro ao reproduzir música:", error);
-                });
-                playButton.textContent = 'Pause Música';
+
+    if (musicaFundo && botaoPlay) {
+        botaoPlay.addEventListener('click', function () {
+            if (musicaFundo.paused) {
+                musicaFundo.play().catch(erro => console.error("Erro ao tocar música:", erro));
+                botaoPlay.textContent = 'Pausar Música';
             } else {
-                backgroundMusic.pause();
-                playButton.textContent = 'Play Música';
+                musicaFundo.pause();
+                botaoPlay.textContent = 'Tocar Música';
             }
         });
     }
 });
 
-// Para fechar o gif
-closeVictoryGifButton.addEventListener('click', function () {
-    victoryGifContainer.style.display = 'none';
-    resetGame();
+// Fecha o GIF de vitória
+botaoFecharGifVitoria.addEventListener('click', function () {
+    containerGifVitoria.style.display = 'none';
+    musicaVitoria.pause();
+    musicaVitoria.currentTime = 0;
+    salvarPontuacao(tentativas, paresCorretos, erros);
+    reiniciarJogo();
 });
 
-// Função para mostrar vitória: Música + Confetes + GIF
+// Mostra vitória
 function mostrarVitoria() {
-    if (victoryMusic) {
-        victoryMusic.currentTime = 0;
-        victoryMusic.play();
+    if (musicaVitoria) {
+        musicaVitoria.currentTime = 0;
+        musicaVitoria.play();
+        musicaFundo.pause();
+        botaoPlay.textContent = 'Tocar Música';
     }
-
-    victoryGifContainer.style.display = 'block';
+    containerGifVitoria.style.display = 'block';
     chuvaDeConfetes();
 }
 
-//Função que gera confetes
+// Confetes de vitória
 function chuvaDeConfetes() {
-    const duration = 3 * 1000;
-    const end = Date.now() + duration;
+    const duracao = 4000;
+    const fim = Date.now() + duracao;
 
     (function frame() {
         confetti({ particleCount: 6, angle: 60, spread: 55, origin: { x: 0 } });
         confetti({ particleCount: 6, angle: 120, spread: 55, origin: { x: 1 } });
-
-        if (Date.now() < end) {
-            requestAnimationFrame(frame);
-        }
+        if (Date.now() < fim) requestAnimationFrame(frame);
     })();
 }
 
-// Sons
-function playSound(soundElement) {
-    if (soundElement) {
-        soundElement.currentTime = 0;
-        soundElement.play();
+// Tocar som
+function tocarSom(elementoSom) {
+    if (elementoSom) {
+        elementoSom.currentTime = 0;
+        elementoSom.play();
     }
 }
 
-// Função para embaralhar
-function shuffleArray(array) {
+// Embaralhar cartas
+function embaralharCartas(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
 
-// Função para criar cartas
-function createCard(pairData) {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    card.dataset.id = pairData.id;
-    card.dataset.valor = pairData.valor;
+// Criar carta
+function criarCarta(par) {
+    const carta = document.createElement('div');
+    carta.classList.add('card');
+    carta.dataset.id = par.id;
+    carta.dataset.valor = par.valor;
 
-    const cardInner = document.createElement('div');
-    cardInner.classList.add('card-inner');
+    const frente = document.createElement('div');
+    frente.classList.add('card-front');
+    frente.textContent = '??';
 
-    const cardFront = document.createElement('div');
-    cardFront.classList.add('card-front');
-    cardFront.textContent = '?';
+    const verso = document.createElement('div');
+    verso.classList.add('card-back');
+    verso.textContent = par.simbolo;
 
-    const cardBack = document.createElement('div');
-    cardBack.classList.add('card-back');
-    cardBack.textContent = pairData.simbolo;
+    const conteudo = document.createElement('div');
+    conteudo.classList.add('card-inner');
+    conteudo.appendChild(frente);
+    conteudo.appendChild(verso);
 
-    cardInner.appendChild(cardFront);
-    cardInner.appendChild(cardBack);
-    card.appendChild(cardInner);
-
-    card.addEventListener('click', flipCard);
-    return card;
+    carta.appendChild(conteudo);
+    carta.addEventListener('click', virarCarta);
+    return carta;
 }
 
-// Função que monta os pares
-function setupGame() {
-    gameContainer.innerHTML = '';
-    shuffleArray(cardPairsData);
-    cards = [];
-    matchedPairs = 0;
-    attempts = 0;
-    flippedCards = [];
-    attemptsDisplay.textContent = attempts;
+// Preparar o jogo
+function prepararJogo() {
+    containerDoJogo.innerHTML = '';
+    embaralharCartas(paresCartas);
+    cartas = [];
+    cartasViradas = [];
+    paresCorretos = 0;
+    tentativas = 0;
+    erros = 0;
+    exibicaoTentativas.textContent = tentativas;
+    exibicaoAcertos.textContent = paresCorretos;
+    exibicaoErros.textContent = erros;
 
-    cardPairsData.forEach(pair => {
-        const card = createCard(pair);
-        cards.push(card);
-        gameContainer.appendChild(card);
+    paresCartas.forEach(par => {
+        const carta = criarCarta(par);
+        cartas.push(carta);
+        containerDoJogo.appendChild(carta);
     });
 }
 
-// Função para virar cartas
-function flipCard() {
-    if (flippedCards.length < 2 && !this.classList.contains('flipped')) {
+// Virar carta
+function virarCarta() {
+    if (cartasViradas.length < 2 && !this.classList.contains('flipped')) {
         this.classList.add('flipped');
-        flippedCards.push(this);
-        playSound(clickSound);
+        cartasViradas.push(this);
+        tocarSom(somClique);
 
-        if (flippedCards.length === 2) {
-            attempts++;
-            attemptsDisplay.textContent = attempts;
-            setTimeout(checkMatch, 700);
+        if (cartasViradas.length === 2) {
+            tentativas++;
+            exibicaoTentativas.textContent = tentativas;
+            setTimeout(verificarPar, 700);
         }
     }
 }
 
-// Função que verificar os pares
-function checkMatch() {
-    const [card1, card2] = flippedCards;
+// Verificar se é par
+function verificarPar() {
+    const [carta1, carta2] = cartasViradas;
 
-    if (card1.dataset.valor === card2.dataset.valor) {
-        playSound(matchSound);
-        matchedPairs++;
-        flippedCards = [];
+    if (carta1.dataset.valor === carta2.dataset.valor) {
+        tocarSom(somAcerto);
+        paresCorretos++;
+        exibicaoAcertos.textContent = paresCorretos;
+        cartasViradas = [];
 
-        if (matchedPairs === cardPairsData.length / 2) {
+
+        if (paresCorretos === paresCartas.length / 2) {
             setTimeout(() => {
-                playSound(winSound);
-                mostrarVitoria(); // AQUI CHAMA VITÓRIA
+                tocarSom(somVitoria);
+                mostrarVitoria();
             }, 400);
         }
     } else {
-        playSound(noMatchSound);
+        tocarSom(somErro);
+        erros++;
+        exibicaoErros.textContent = erros;
         setTimeout(() => {
-            card1.classList.remove('flipped');
-            card2.classList.remove('flipped');
-            flippedCards = [];
+            carta1.classList.remove('flipped');
+            carta2.classList.remove('flipped');
+            cartasViradas = [];
         }, 700);
     }
 }
 
-// Função para resetar o game 
-function resetGame() {
-    setupGame();
+// Reiniciar jogo
+function reiniciarJogo() {
+    prepararJogo();
 }
 
-// Chamando a função que da start no game 
-setupGame();
+// Envia os dados para o servidor (API)
+function salvarPontuacao( acertos, erros) {
+    var fkJogador = Number(sessionStorage.getItem('ID_USUARIO'));
+    console.log("Id do jogador:", fkJogador);
 
-victoryMusic.pause();
-victoryMusic.currentTime = 0;
-
-
-// Fecha o GIF de vitória e reseta
-closeVictoryGifButton.addEventListener('click', function () {
-    victoryGifContainer.style.display = 'none';
-
-    // Parar a música de vitória
-    if (victoryMusic) {
-        victoryMusic.pause();
-        victoryMusic.currentTime = 0;
-    }
-
-    // Salvar pontuação (mínima e máxima)
-    salvarPontuacao(attempts);
-
-    resetGame();
-});
-
-function salvarPontuacao(pontuacaoAtual) {
-    let menor = localStorage.getItem('menorPontuacao');
-    let maior = localStorage.getItem('maiorPontuacao');
-
-    menor = menor ? parseInt(menor) : null;
-    maior = maior ? parseInt(maior) : null;
-
-    if (menor === null || pontuacaoAtual < menor) {
-        localStorage.setItem('maiorPontuacao', pontuacaoAtual);
-        console.log(`Nova melhor pontuação: ${pontuacaoAtual}`);
-    }
-
-    if (maior === null || pontuacaoAtual > maior) {
-        localStorage.setItem('menorPontuacao', pontuacaoAtual);
-        console.log(`Nova menor pontuação: ${pontuacaoAtual}`);
-    }
-
-    //      falta enviar para servidor via fetch POST
-    //     fetch('/pontos/buscarPontos', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({
-    //             email: sessionStorage.EMAIL_USUARIO,
-    //             maior: localStorage.getItem('maiorPontuacao'),
-    //             menor: localStorage.getItem('menorPontuacao')
-    //         })
-    //     });
+if (!sessionStorage.ID_USUARIO || isNaN(Number(sessionStorage.ID_USUARIO))) {
+    alert("Jogador não está logado ou ID inválido!");
+    return;
 }
+
+    fetch("/pontos/cadastrar", {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            acertos: acertos,
+            erros: erros,
+            fkJogador: fkJogador,
+            fkJogo_memoria: fkJogo_memoria
+        })
+    })
+        .then(res => {
+            if (!res.ok) throw new Error('Erro ao salvar pontuação');
+            return res.json();
+        })
+        .then(dado => {
+            console.log('Pontuação salva com sucesso:', dado);
+        })
+        .catch(erro => {
+            console.error('Erro ao enviar pontuação:', erro);
+        });
+}
+
+prepararJogo();

@@ -1,16 +1,9 @@
-var express = require("express");
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const pontosController = require('../controllers/pontosController');
 
-var pontosController = require("../controllers/pontosController");
-
-router.post("/buscarPontos", function (req, res) {
-    // função a ser chamada quando acessar /carros/cadastrar
-    pontosController.buscarPontos(req, res);
-});
-
-router.get("/inserirPontos", function(req, res){
-
-    pontosController.inserirPontos(req, res); 
+router.post("/cadastrar", function (req, res) {
+    pontosController.cadastrar(req, res);
 })
-module.exports = router;
 
+module.exports = router;

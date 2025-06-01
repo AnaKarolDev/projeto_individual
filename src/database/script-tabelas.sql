@@ -11,7 +11,7 @@ CREATE DATABASE inside_music;
 USE inside_music;
 
 CREATE TABLE jogador (
-    idJogador INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(50),
     email VARCHAR(50),
     senha VARCHAR(50)
@@ -19,34 +19,16 @@ CREATE TABLE jogador (
 
 CREATE TABLE jogo_memoria (
     idJogo_Memoria INT PRIMARY KEY AUTO_INCREMENT,
-    viradas int
+    tentativas INT,
+    momento DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-create table pontos (
-    /* em nossa regra de negócio, um aquario tem apenas um sensor */
+CREATE TABLE pontos (
     idPontos INT PRIMARY KEY AUTO_INCREMENT,
-    pontuacao_max INT,
-    pontuacao_min INT,
     acertos INT,
+    erros INT,
     fkJogador INT,
     fkJogo_memoria INT,
-    constraint fkJogoJogador foreign key (fkJogador) references jogador (idJogador),
+    constraint fkJogoJogador foreign key (fkJogador) references jogador (id),
     constraint fkJogadorJogo foreign key (fkJogo_memoria) references jogo_memoria (idJogo_memoria)
 );
-
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-
-insert into
-    jogador (nome, email, senha)
-values ('Ana', 'ana@gmail.com', 'ana123');
-
-insert into
-    jogador (nome, email, senha)
-values ('Karol', 'karol@gmail.com', 'karol123');
-
-
-insert into
-    pontos (pontuacao_max, pontuacao_min, fkJogador)
-values (8, 6, 2);
-

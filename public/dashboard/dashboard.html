@@ -19,14 +19,8 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
-    <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
@@ -38,7 +32,8 @@
             <h1>Inside Music</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_Jogador">Jogador</span>!</h3>
+                <h3>Olá, <span id="b_Jogador"></span></h3>
+                <!-- id="b_Jogador" -->
             </div>
 
             <div class="btn-nav-white">
@@ -68,7 +63,7 @@
                 <!-- O gráfico é chamado de acordo com o id (fk_pontos) do banco  -->
             </div>
             <div id="graficos">
-                <canvas id="graficoPontuacoes" width="400" height="200"></canvas>
+                <canvas id="graficoDesempenho" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -79,298 +74,130 @@
 </html>
 
 <script>
+
     b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
+function carregarDadosDashboard() {
 
-    let proximaAtualizacao;
+    const idJogador = sessionStorage.ID_USUARIO;
+    if (!idJogador) {
+        console.error("Usuário não autenticado");
+        return;
+    }
 
-    window.onload = exibirDashDoUsuario;
-    function plotarGrafico() {
+     fetch("/pontos/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        acerto: acertos,
+        erro: erros,
+        jogador: fkJogador
 
-        if (sessionStorage.NOME_USUARIO) {
-            b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
-        } else {
-            b_Jogador.innerHTML = "Visitante";
-        }
+      }),
+    })
+        .then(res => {
+            if (!res.ok) throw new Error('Erro ao buscar dados');
+            return res.json();
+        })
+        .then(dados => {
+            console.log('Dados recebidos:', dados);
+            // Agora exiba os dados na tela, ex:
+            document.getElementById('tentativas').textContent = dados.tentativas || 0;
+            document.getElementById('acertos').textContent = dados.acertos || 0;
+            document.getElementById('erros').textContent = dados.erros || 0;
 
-        const maiorPontuacao = localStorage.getItem('maiorPontuacao');
-        const menorPontuacao = localStorage.getItem('menorPontuacao');
+            // Se quiser, atualize gráficos, tabelas, etc.
+        })
+        .catch(erro => {
+            console.error('Erro ao carregar dados:', erro);
+        });
+}
 
-        if (maiorPontuacao === null || menorPontuacao === null) {
-            console.warn('Pontuações não encontradas no localStorage.');
-            return;
-        }
+console.log("ID do jogador no sessionStorage:", sessionStorage.ID_USUARIO);
 
-        const ctx = document.getElementById('graficoPontuacoes').getContext('2d');
+     document.addEventListener('DOMContentLoaded', () => {
+    const fkJogador = sessionStorage.ID_USUARIO;
 
-        // Destroi gráfico antigo se existir (caso o jogador jogue novamente)
-        if (window.grafico) {
-            window.grafico.destroy();
-        }
+    if (!fkJogador) {
+        alert("Usuário não identificado. Faça login novamente.");
+        window.location.href = "/login.html";
+        return;
+    }
 
-        window.grafico = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Melhor (menos tentativas)', 'Pior (mais tentativas)'],
-                datasets: [{
-                    label: 'Tentativas',
-                    data: [maiorPontuacao, menorPontuacao],
-                    backgroundColor: ['#4caf50', '#f44336']
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0
+    fetch(`/pontos/ultimos/${fkJogador}`)
+        .then(res => {
+            if (!res.ok) throw new Error("Erro ao buscar dados");
+            return res.json();
+        })
+        .then(dados => {
+            if (!dados || dados.length === 0) {
+                console.warn("Nenhum dado para exibir no gráfico.");
+                return;
+            }
+
+            const tentativas = dados.map(d => d.tentativas).reverse();
+            const acertos = dados.map(d => d.acertos).reverse();
+            const erros = dados.map(d => d.erros).reverse();
+            const momentos = dados.map(d => d.momento).reverse();
+
+            const ctx = document.getElementById("graficoDesempenho").getContext("2d");
+
+            new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: momentos,
+                    datasets: [
+                        {
+                            label: "Tentativas",
+                            data: tentativas,
+                            backgroundColor: "#ffcd56"
+                        },
+                        {
+                            label: "Acertos",
+                            data: acertos,
+                            backgroundColor: "#4bc0c0"
+                        },
+                        {
+                            label: "Erros",
+                            data: erros,
+                            backgroundColor: "#ff6384"
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: "Histórico de Desempenho"
+                        },
+                        legend: {
+                            position: "top"
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Quantidade"
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: "Data / Hora"
+                            }
                         }
                     }
                 }
-            }
+            });
+        })
+        .catch(erro => {
+            console.error("Erro ao carregar gráfico:", erro);
         });
-    }
-
-    // function mostrarVitoria() {
-    //     if (victoryMusic) {
-    //         victoryMusic.currentTime = 0;
-    //         victoryMusic.play();
-    //     }
-
-    //     victoryGifContainer.style.display = 'block';
-    //     chuvaDeConfetes();
-
-    //     plotarGrafico(); // <-- aqui você chama o gráfico
-    // }
+});
 
 
-    function exibirDashDoUsuario() {
-        var pontos = JSON.parse(sessionStorage.NOME_USUARIO);
-        pontos.forEach(item => {
-            document.getElementById("btnDash").innerHTML += `
-            <button class="btn-chart" onclick="exibirDash(${item.id})" id="btnDash${item.id}">${item.descricao}</button>
-            `
-
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloDash${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            plotarGrafico(item.id)
-        });
-
-        if (pontos.length > 0) {
-            exibirDash(pontos[0].id)
-        }
-    }
-
-    // function alterarTitulo(idPontos) {
-    //     var tituloDash = document.getElementById(`tituloDash${idPontos}`)
-    //     var descricao = JSON.parse(sessionStorage.PONTOS).find(item => item.id == idPontos).descricao;
-    //     tituloDash.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>" + descricao + "</span>"
-    // }
-
-    // function exibirPontos(idPontos) {
-    //     let todosOsGraficos = JSON.parse(sessionStorage.PONTOS);
-
-    //     for (i = 0; i < todosOsGraficos.length; i++) {
-    //         // exibindo - ou não - o gráfico
-    //         if (todosOsGraficos[i].id != idPontos) {
-    //             let elementoAtual = document.getElementById(`grafico${todosOsGraficos[i].id}`)
-    //             if (elementoAtual.classList.contains("display-block")) {
-    //                 elementoAtual.classList.remove("display-block")
-    //             }
-    //             elementoAtual.classList.add("display-none")
-
-    //             // alterando estilo do botão
-    //             let btnAtual = document.getElementById(`btnDash${todosOsGraficos[i].id}`)
-    //             if (btnAtual.classList.contains("btn-pink")) {
-    //                 btnAtual.classList.remove("btn-pink")
-    //             }
-    //             btnAtual.classList.add("btn-white")
-    //         }
-    //     }
-
-    //     // exibindo - ou não - o gráfico
-    //     let graficoExibir = document.getElementById(`grafico${idPontos}`)
-    //     graficoExibir.classList.remove("display-none")
-    //     graficoExibir.classList.add("display-block")
-
-    //     // alterando estilo do botão
-    //     let btnExibir = document.getElementById(`btnDash${idPontos}`)
-    //     btnExibir.classList.remove("btn-white")
-    //     btnExibir.classList.add("btn-pink")
-    // }
-
-    // O gráfico é construído com três funções:
-    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
-    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
-    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
-
-    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
-    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
-    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
-
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
-    // function obterDadosGrafico(idPontos) {
-
-    //     alterarTitulo(idPontos)
-
-    //     if (proximaAtualizacao != undefined) {
-    //         clearTimeout(proximaAtualizacao);
-    //     }
-
-    //     fetch(`/medidas/ultimas/${idPontos}`, { cache: 'no-store' }).then(function (response) {
-    //         if (response.ok) {
-    //             response.json().then(function (resposta) {
-    //                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-    //                 resposta.reverse();
-
-    //                 plotarGrafico(resposta, idPontos);
-
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //         }
-    //     })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    //         });
-    // }
-
-    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
-    // Configura o gráfico (cores, tipo, etc), materializa-o na página e,
-    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    // function plotarGrafico(resposta, idPontos) {
-
-    //     console.log('iniciando plotagem do gráfico...');
-
-    //     // Criando estrutura para plotar gráfico - labels
-    //     let labels = [];
-
-    //     // Criando estrutura para plotar gráfico - dados
-    //     let dados = {
-    //         labels: labels,
-    //         datasets: [{
-    //             label: 'Pontuação',
-    //             data: [],
-    //             fill: false,
-    //             borderColor: 'rgb(75, 192, 192)',
-    //             tension: 0.1
-    //         },
-    //         {
-    //             // label: 'Temperatura',
-    //             // data: [],
-    //             // fill: false,
-    //             // borderColor: 'rgb(199, 52, 52)',
-    //             // tension: 0.1
-    //         }]
-    //     };
-
-    //     console.log('----------------------------------------------')
-    //     console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-    //     console.log(resposta)
-
-    //     // Inserindo valores recebidos em estrutura para plotar o gráfico
-    //     for (i = 0; i < resposta.length; i++) {
-    //         var registro = resposta[i];
-    //         labels.push(registro.momento_grafico);
-    //         dados.datasets[0].data.push(registro.umidade);
-    //         // dados.datasets[1].data.push(registro.temperatura);
-    //     }
-
-    //     console.log('----------------------------------------------')
-    //     console.log('O gráfico será plotado com os respectivos valores:')
-    //     console.log('Labels:')
-    //     console.log(labels)
-    //     console.log('Dados:')
-    //     console.log(dados.datasets)
-    //     console.log('----------------------------------------------')
-
-    //     // Criando estrutura para plotar gráfico - config
-    //     const config = {
-    //         type: 'line',
-    //         data: dados,
-    //     };
-
-    //     // Adicionando gráfico criado em div na tela
-    //     let myChart = new Chart(
-    //         document.getElementById(`myChartCanvas${idPontos}`),
-    //         config
-    //     );
-
-    //     setTimeout(() => atualizarGrafico(idPontos, dados, myChart), 2000);
-    // }
-
-
-    // // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
-    // // buscando a última medida inserida em tabela contendo as capturas,
-
-    // //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    // //     Para ajustar o "select", ajuste o comando sql em src/models
-    // function atualizarGrafico(idPontos, dados, myChart) {
-
-
-
-    //     fetch(`/medidas/tempo-real/${idPontos}`, { cache: 'no-store' }).then(function (response) {
-    //         if (response.ok) {
-    //             response.json().then(function (novoRegistro) {
-
-    //                 obterdados(idPontos);
-    //                 // alertar(novoRegistro, idAquario);
-    //                 console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-    //                 console.log(`Dados atuais do gráfico:`);
-    //                 console.log(dados);
-
-    //                 let avisoCaptura = document.getElementById(`avisoCaptura${idPontos}`)
-    //                 avisoCaptura.innerHTML = ""
-
-
-    //                 if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
-    //                     console.log("---------------------------------------------------------------")
-    //                     console.log("Como não há dados novos para captura, o gráfico não atualizará.")
-    //                     avisoCaptura.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
-    //                     console.log("Horário do novo dado capturado:")
-    //                     console.log(novoRegistro[0].momento_grafico)
-    //                     console.log("Horário do último dado capturado:")
-    //                     console.log(dados.labels[dados.labels.length - 1])
-    //                     console.log("---------------------------------------------------------------")
-    //                 } else {
-    //                     // tirando e colocando valores no gráfico
-    //                     dados.labels.shift(); // apagar o primeiro
-    //                     dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-    //                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-    //                     dados.datasets[0].data.push(novoRegistro[0].pontuacao); // incluir uma nova medida de umidade
-
-    //                     // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
-    //                     // dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-    //                     myChart.update();
-    //                 }
-
-    //                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-    //                 proximaAtualizacao = setTimeout(() => atualizarGrafico(idPontos, dados, myChart), 2000);
-    //             });
-    //         } else {
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //             // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-    //             proximaAtualizacao = setTimeout(() => atualizarGrafico(idPontos, dados, myChart), 2000);
-    //         }
-    //     })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-    //         });
-
-    // }
 </script>

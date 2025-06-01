@@ -28,8 +28,9 @@
             <h1>Inside Music</h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_Jogador">Jogador</span>!</h3><br><br>
+                <h3>Olá, <span id="b_Jogador" ></span></h3><br><br>
             </div>
+            <!--id="b_Jogador"-->
 
             <div class="btn-nav">
                 <h3>Jogos</h3>
@@ -80,7 +81,9 @@
             document.getElementById("b_Jogador").innerHTML = sessionStorage.NOME_USUARIO;
         } else {
             document.getElementById("b_Jogador").innerHTML = "Visitante";
-            console.warn("NOME_USUARIO não encontrado no sessionStorage.");
-        }
+            console.log("NOME_USUARIO não encontrado no sessionStorage.");
+     
+       }
+    console.log(sessionStorage.NOME_USUARIO);
     }
 </script>

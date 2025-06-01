@@ -46,7 +46,7 @@
         <div class="container">
             <div class="card card-login">
                 <div class="card_login_titulo">
-                <h4>Login</h4>
+                    <h4>Login</h4>
                 </div>
                 <div class="formulario">
                     <div class="campo">
@@ -61,7 +61,7 @@
                 </div>
 
                 <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                    <img src="./jogo-projeto/img/giphy_gif (200×200).gif" id="loading_gif">
                 </div>
 
                 <div id="div_erros_login"></div>
@@ -72,7 +72,7 @@
     <!--footer-->
     <div class="footer">
         <div class="container">
-            <h4>Ana Karoline  &hearts; Todos os direitos reservados &copy; 2025</h4>
+            <h4>Ana Karoline &hearts; Todos os direitos reservados &copy; 2025</h4>
         </div>
     </div>
     <!--footer-->
@@ -85,7 +85,8 @@
 
 
     function entrar() {
-       
+
+        const container_loading_gif = document.getElementById('loading_gif');
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
@@ -117,17 +118,21 @@
             if (resposta.ok) {
                 console.log(resposta);
                 // console.log("JSON recebido no login:", json);
-                
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Login realizado com sucesso";
+                loading_gif.style.display = 'block';
+
                 resposta.json().then(json => {
-                     console.log("JSON recebido do servidor:", json);
+                    console.log("JSON recebido do servidor:", json);
                     console.log(json);
                     console.log(JSON.stringify(json));
 
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    
+                    sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
+                        
                         window.location = "./dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
@@ -136,7 +141,8 @@
             } else {
 
                 console.log("Houve um erro ao tentar realizar o login!");
-
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Erro ao realizar o login, usuário ou senha inválidos";
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);
@@ -155,7 +161,7 @@
     }
 
     function finalizarAguardar() {
-    console.log("Finalizou o carregamento");
-}
+        console.log("Finalizou o carregamento");
+    }
 
 </script>

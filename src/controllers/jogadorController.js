@@ -15,6 +15,7 @@ function autenticar(req, res) {
                     res.json({
                         email: resultadoJogadores[0].email,
                         nome: resultadoJogadores[0].nome,
+                        id: resultadoJogadores[0].id
 
                     });
                 } else if (resultadoJogadores.length == 0) {

@@ -1,15 +1,33 @@
-var database = require("../database/config");
+const database = require("../database/config");
 
-function inserirPontos(idPontos, acertos) {
-  var instrucaoSql = `INSERT INTO pontos (idPontos, acertos) VALUES ('${idPontos}', '${acertos}')`;
-
-  return database.executar(instrucaoSql);
+// Função para salvar os dados no banco
+function cadastrar(acertos, erros, fkJogador, fkJogo_memoria) {
+    const instrucaoJogo = `
+        INSERT INTO pontos (acertos, erros, fkJogador, fkJogo_memoria)
+        VALUES (${acertos}, ${erros}, ${fkJogador}, ${fkJogo_memoria});
+    `;
+            return database.executar(instrucaoJogo);
+  
 }
 
-function buscarPontos(idPontos) {
-  var instrucaoSql = `SELECT * FROM pontos WHERE id = '${idPontos}'`;
-
-  return database.executar(instrucaoSql);
+// Função para buscar últimos dados do jogador para o gráfico
+function buscar(fkJogador, limite = 10) {
+    const instrucao = `
+        SELECT 
+            jm.tentativas,
+            p.acertos,
+            p.erros,
+            DATE_FORMAT(jm.momento, '%H:%i:%s') AS momento
+        FROM jogo_memoria jm
+        JOIN pontos p ON p.fkJogo_memoria = jm.idJogo_Memoria
+        WHERE p.fkJogador = ${fkJogador}
+        ORDER BY jm.momento DESC
+        LIMIT ${limite};
+    `;
+    return database.executar(instrucao);
 }
 
-module.exports = {inserirPontos, buscarPontos};
+module.exports = {
+    cadastrar,
+    buscar
+};

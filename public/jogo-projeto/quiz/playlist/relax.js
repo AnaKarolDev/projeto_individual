@@ -6,8 +6,8 @@ const barra = document.getElementById("barra");
 const tempoAtual = document.getElementById("tempo-atual");
 const tempoTotal = document.getElementById("tempo-total");
 
-const musicas = ["../music/Maroon-5-Sugar.mp3", "../music/Maverick-Sabre-Slow-Down-vintage-culture.mp3", "../music/Kings-Of-Leon-Sex-on-Fire.mp3"];
-const titulos = ["Maroon 5 - Sugar", "Maverick Sabre - Slow Down", "Kings Of Leon - Sex-on-Fire"];
+const musicas = ["../sounds/Chopin-Nocturne-in-Eb-Major.mp3", "../sounds/Debussy-Claire-de-lune.mp3", "../sounds/Ludovico-Einaudi-Nuvole-Bianche.mp3"];
+const titulos = ["Chopin - Nocturne in Eb Major", "Claude Debussy - Clair de Lune", "Ludovico Einaudi - Nuvole Bianche"];
 let indice = 0;
 let tocando = false;
 

@@ -48,7 +48,7 @@ body {
 
 .header a {
   text-decoration: none;
-  color: #384056;
+  color: #ef5291;
   font-size: 20px;
 
 }
@@ -157,6 +157,7 @@ body {
 }
 
 .social img {
+  margin-top: 30px;
   width: 206px;
   height: 206px;
   padding: 24px;
@@ -180,10 +181,9 @@ body {
 
 .social .container .sobre_mim {
   display: flex;
+  border: 2px outset #ffff;
   flex-direction: column;
   align-self: auto;
-  border-right: 10px solid #EA9ABA;
-  border-bottom: 8px solid #EA9ABA;
 }
 
 .social p {
@@ -199,13 +199,14 @@ body {
 }
 
 .sobre_mim_titulo {
-  width: 960px;
-  height: 54px;
+  width: 100%;
+  height: 44px;
   background-color: #FFFFFF;
-  border: 2px solid #EA9ABA;
+  border: 2px outset #fff;
 }
 
 .sobre_mim_titulo h4 {
+  margin-top: 10px;
   padding-left: 24px;
   color: #ef5291;
   font-size: 20px;
@@ -213,7 +214,8 @@ body {
 
 .sobre_mim_texto {
   display: flex;
-  gap: 200px;
+  gap: 90px;
+  padding-left: 100px;
 }
 
 .sobre_mim_texto p {
@@ -254,8 +256,7 @@ body {
 .music-cards .card-95 {
   background-color: #FEEDE7;
   /* Branco acinzentado com transparência */
-  border: 2px solid #EA9ABA;
-  box-shadow: 4px 4px #EA9ABA;
+  border: 2px outset #fff;
   width: 250px;
 }
 
@@ -263,7 +264,7 @@ body {
   background-color: #FFFFFF;
   color: #ef5291;
   padding: 10px;
-  border-bottom: 2px solid #EA9ABA;
+  border-bottom: 1px outset #fff;
   font-weight: bold;
   font-size: 1.4em;
 }
@@ -271,6 +272,15 @@ body {
 .music-cards .card-body {
   padding: 20px;
   min-height: 100px;
+}
+
+.music-cards .card-body h4 {
+  color: #7887B0;
+}
+
+.music-cards .card-body p {
+  color: #7887B0;
+
 }
 
 .audio-player {

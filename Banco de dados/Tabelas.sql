@@ -24,8 +24,9 @@ constraint fkJogoJogador foreign key (fkJogador) references jogador(id),
  constraint fkJogadorJogo foreign key (fkJogo_memoria) references jogo_memoria(idJogo_memoria)
 );
 
-
 select * from jogador;
+select * from pontos;
+select * from jogo_Memoria;
 
 insert into
     jogador (nome, email, senha)
@@ -36,7 +37,12 @@ insert into
 values ('Karol', 'karol@gmail.com', 'karol123');
 
 
-insert into
-    pontos (pontuacao_max, pontuacao_min, fkJogador)
-values (8, 6, 2);
+insert into pontos (pontuacao_max, pontuacao_min, acertos, fkJogador) values 
+(8, 6, 5, 1),
+(10, 9, 6, 2),
+(7, 5, 4, 3);
+
+select * from pontos;
+
+select acertos from pontos where idPontos = idPontos;
 

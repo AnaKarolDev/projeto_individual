@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -11,38 +11,45 @@
 </head>
 
 <body>
+    <!-- Áudios -->
     <audio id="clickSound" src="../sounds/plin.mp3"></audio>
     <audio id="matchSound" src="../sounds/Ping Sound Effect.mp3"></audio>
     <audio id="noMatchSound" src="../sounds/Losing Sound Effect.mp3"></audio>
     <audio id="winSound" src="../sounds/Ping Sound Effect.mp3"></audio>
     <audio id="victoryMusic" src="../sounds/soda_soda.mp3"></audio>
+
+    <!-- Música de fundo -->
     <div class="audio-background">
-        <audio id="backgroundMusic" src="../sounds/＂boba date＂ ♫ ｜ cute background music (royalty free).mp3"
-            loop></audio>
+        <audio id="backgroundMusic" src="../sounds/＂boba date＂ ♫ ｜ cute background music (royalty free).mp3" loop></audio>
         <button id="playButton" class="button-95">Play Música</button>
     </div>
+
     <div class="window-border">
         <h1 class="game-title">Pares Musicais</h1>
-        <div class="game-grid">
+
+        <!-- Grade do jogo -->
+        <div class="game-grid"></div>
+
+        <!-- Indicadores de desempenho -->
+        <div class="attempts-label">
+            <p><strong>Tentativas:</strong> <span class="attempts-count">0</span></p>
+            <p><strong>Acertos:</strong> <span class="acertos-count">0</span></p>
+            <p><strong>Erros:</strong> <span class="erros-count">0</span></p>
         </div>
-        <div class="attempts">
-            <p class="attempts-label">Tentativas:</p>
-            <p class="attempts-count">0</p>
-             <p class="attempts-label">Pontuação mínima: <span id="menorPontuacao">-</span></p>
-        <p class="attempts-count">0</p>
-        <p class="attempts-label">Pontuação máxima: <span id="maiorPontuacao"></span></p><br><br>
-        <p class="attempts-count">0</p>
-        </div>  
     </div>
 
-    <button class="button-95" onclick="window.location.href='/dashboard/cards.html'"">Voltar</button>
-    <div id="victoryGifContainer" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1001; background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
+    <!-- Botão de voltar -->
+    <button class="button-95" onclick="window.location.href='/dashboard/cards.html'">Voltar</button>
+
+    <!-- GIF de vitória -->
+    <div id="victoryGifContainer"
+        style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1001; background-color: rgba(0, 0, 0, 0.5); padding: 20px; border-radius: 10px;">
         <img id="victoryGif" src="../img/giphy_gif (200×200).gif" alt="Você Venceu!">
         <button id="closeVictoryGif" class="button-95">Fechar</button>
-        </div>
+    </div>
 
-
-        <script src="pares_musicais.js"></script>
+    <!-- Script do jogo -->
+    <script src="pares_musicais.js"></script>
 </body>
 
 </html>
