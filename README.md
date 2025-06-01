@@ -1,6 +1,7 @@
 # INSIDE MUSIC
 
-É um projeto musical que une música, um design retro em pixel art e jogos de pares musicais e ainda 
+É um projeto musical desenvolvido para aprendizado na faculdade SPTECH na disciplina de Análise e
+Desenvolvimento de Sistemas que une música, um design retro em pixel art e jogos de pares musicais e ainda 
 uma indicação de playlist de acordo com seu humor naquele dia! 
 
 ![image](https://github.com/user-attachments/assets/366770d9-2023-40d5-9f9a-07c5bf3579c5)
