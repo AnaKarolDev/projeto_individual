@@ -28,14 +28,15 @@ constraint fkJogoJogador foreign key (fkJogador) references jogador(id),
 
 CREATE TABLE quiz_musical (
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,
-    sentimento VARCHAR(20),
-    tipo_musica VARCHAR(20),
-    objetivo VARCHAR(20),
-    resultado_playlist VARCHAR(30),
+    sentimento VARCHAR(45),
+    tipo_musica VARCHAR(45),
+    objetivo VARCHAR(45),
+    resultado_playlist VARCHAR(45),
     momento DATETIME DEFAULT CURRENT_TIMESTAMP,
     fkJogador INT,
     CONSTRAINT fkJogadorQuiz FOREIGN KEY (fkJogador) REFERENCES jogador(id)
-);
+    );
+
 
 
 select * from jogador;
