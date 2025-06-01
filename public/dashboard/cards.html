@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,8 +11,9 @@
 
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
-
+    <link rel="icon" href="./assets/imgs/IM_logo.png">
     <script src="../js/sessao.js"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -25,10 +26,10 @@
 
         <div class="header-left dash-header">
 
-            <h1>Inside Music</h1>
+            <h1 class="titulo"><img src="../assets/imgs/IM_logo.png" alt=""></h1>
 
             <div class="hello">
-                <h3>Olá, <span id="b_Jogador" ></span></h3><br><br>
+                <h3>Olá, <span id="b_Jogador"></span></h3><br><br>
             </div>
             <!--id="b_Jogador"-->
 
@@ -60,30 +61,32 @@
                 <div class="card_jogo_memoria">
                     <div onclick="window.location.href='../jogo-projeto/quiz/quiz.html'" class="jogo_quiz">
                         <h1>Quiz</h1>
-                 
-            </div>
-            <div class="card_jogo_memoria">
-                    <div onclick="window.location.href='../jogo-projeto/jogo_memoria/pares_musicais.html'" class="jogo_memoria">
-                        <h1>Jogo da Memória</h1>
-                 
-                
-            </div>
-        </div>
-    </div>
+
+                    </div>
+                    <div class="card_jogo_memoria">
+                        <div onclick="window.location.href='../jogo-projeto/jogo_memoria/pares_musicais.html'"
+                            class="jogo_memoria">
+                            <h1>Jogo da Memória</h1>
+
+
+                        </div>
+                    </div>
+                </div>
 
 </body>
+
 </html>
 <script>
 
-    
+
     window.onload = function () {
         if (sessionStorage.NOME_USUARIO) {
             document.getElementById("b_Jogador").innerHTML = sessionStorage.NOME_USUARIO;
         } else {
             document.getElementById("b_Jogador").innerHTML = "Visitante";
             console.log("NOME_USUARIO não encontrado no sessionStorage.");
-     
-       }
-    console.log(sessionStorage.NOME_USUARIO);
+
+        }
+        console.log(sessionStorage.NOME_USUARIO);
     }
 </script>
