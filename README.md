@@ -1,12 +1,17 @@
-INSIDE MUSIC
+# INSIDE MUSIC
 
-![image](https://github.com/user-attachments/assets/16c2621f-1a33-40c5-bdb1-cc997736cfd6)
-![image](https://github.com/user-attachments/assets/3e062f14-cd2e-4c87-9829-380984290334)
-![image](https://github.com/user-attachments/assets/1a36c40b-636b-44cd-8d64-f1faff05cc34)
-![image](https://github.com/user-attachments/assets/59c19ac9-7ec4-488b-9910-1fcc2060c870)
+É um projeto musical desenvolvido para aprendizado na faculdade SPTECH na disciplina de Análise e
+Desenvolvimento de Sistemas que une música, um design retro em pixel art e jogos de pares musicais e ainda 
+uma indicação de playlist de acordo com seu humor naquele dia! 
 
+![image](https://github.com/user-attachments/assets/366770d9-2023-40d5-9f9a-07c5bf3579c5)
 
-É um projeto musical une música e um design retro!
+![image](https://github.com/user-attachments/assets/d7559fc4-ee26-4aef-b8c0-114d201174e6)
+
+![image](https://github.com/user-attachments/assets/fe9ebc87-8468-4436-bb1d-40faa1eca21c)
+
+![image](https://github.com/user-attachments/assets/1c38308b-90f0-4de7-93c1-3c61797c47aa)
+![image](https://github.com/user-attachments/assets/75529665-f530-4497-b75d-822a5f0ce526)
 
 
 
@@ -14,8 +19,11 @@ INSIDE MUSIC
 
 1. Clone este repositório em sua máquina.
 
-Com o comando windows + R uma tela preta de terminal será aberta nela você executará os comandos abaixo:
+Pressionando as teclas windows + R uma tela preta de terminal será aberta nela você executará os comandos abaixo:
 
+```
+git clone "o caminho copiado no code nesse repositório"
+```
 ```
 npm i
 ``` 
