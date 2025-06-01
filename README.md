@@ -18,8 +18,11 @@ uma indicação de playlist de acordo com seu humor naquele dia!
 
 1. Clone este repositório em sua máquina.
 
-Com o comando windows + R uma tela preta de terminal será aberta nela você executará os comandos abaixo:
+Pressionando as teclas windows + R uma tela preta de terminal será aberta nela você executará os comandos abaixo:
 
+```
+git clone "o caminho copiado no code nesse repositório"
+```
 ```
 npm i
 ``` 
