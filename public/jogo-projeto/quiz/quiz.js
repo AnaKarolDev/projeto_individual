@@ -82,20 +82,82 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
     setTimeout(function () {
       alerta.style.display = "none";
     }, 3000);
-    return
+    return;
   }
 
   const { q1, q2, q3 } = respostas;
 
+  let resultadoPlaylist = "dance";
   if (q1 === "triste" || q3 === "curar") {
-    window.location.href = "./playlist/confort.html";
+    resultadoPlaylist = "confort";
   } else if (q1 === "animado" && q2 === "dancante") {
-    window.location.href = "./playlist/dance.html";
+    resultadoPlaylist = "dance";
   } else if (q1 === "estressado" || q3 === "relaxar") {
-    window.location.href = "./playlist/relax.html";
+    resultadoPlaylist = "relax";
   } else if (q1 === "pensativo" || q2 === "profundo") {
-    window.location.href = ".//playlist/reflexao.html";
-  } else {
-    window.location.href = "sugestao.html";
+    resultadoPlaylist = "reflexao";
   }
+
+  let id = sessionStorage.ID_USUARIO;
+
+  fetch("/quiz/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      sentimento: q1,
+      tipo_musica: q2,
+      objetivo: q3,
+      resultado_playlist: resultadoPlaylist,
+      fkJogador: id 
+    })
+  }).then(response => {
+    if (response.ok) {
+      window.location.href = `./playlist/${resultadoPlaylist}.html`;
+    } else {
+      alerta.innerText = "Erro ao salvar respostas.";
+    }
+  });
 });
+
+
+fetch("/quiz/estatisticas")
+    .then(res => res.json())
+    .then(dados => {
+        const playlists = dados.map(item => item.resultado_playlist);
+        const totais = dados.map(item => item.total);
+
+        const ctxQuiz = document.getElementById('graficoQuiz').getContext('2d');
+
+        new Chart(ctxQuiz, {
+            type: 'doughnut',
+            data: {
+                labels: playlists,
+                datasets: [{
+                    label: 'Distribuição das playlists',
+                    data: totais,
+                    backgroundColor: [
+                        '#E60058',
+                        '#FF8C42',
+                        '#FFD700',
+                        '#3CB371',
+                        '#1E90FF',
+                        '#8A2BE2'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'rgb(230, 0, 88)'
+                        }
+                    }
+                }
+            }
+        });
+    })
+    .catch(erro => console.error("Erro ao carregar estatísticas do quiz:", erro));
+

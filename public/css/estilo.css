@@ -161,7 +161,7 @@ body {
   width: 206px;
   height: 206px;
   padding: 24px;
-  border-radius: 10px;
+  
 
 }
 
@@ -199,7 +199,6 @@ body {
 }
 
 .sobre_mim_titulo {
-  width: 100%;
   height: 44px;
   background-color: #FFFFFF;
   border: 2px outset #fff;
@@ -226,23 +225,18 @@ body {
 }
 
 
-.boxes {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 0;
-  gap: 0;
-
-}
+/*Div music e cards*/
 
 .music {
   padding: 60px 20px;
   text-align: center;
+  margin-bottom: 150px;
 }
 
 .music h2 {
   font-size: 4em;
   margin-bottom: 30px;
-  color: #384056;
+  color: #ef5291;;
 }
 
 .music-cards {
@@ -255,7 +249,6 @@ body {
 
 .music-cards .card-95 {
   background-color: #FEEDE7;
-  /* Branco acinzentado com transparência */
   border: 2px outset #fff;
   width: 250px;
 }
@@ -285,6 +278,49 @@ body {
 
 .audio-player {
   text-align: left;
+}
+
+
+.card-95 {
+  width: 250px;
+  height: 180px;
+  background-color: #f4f4f4;
+  border: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, height 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header {
+  background-color: #c9d6ff;
+  color: #000;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.card-body {
+  padding: 10px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  max-height: 60px;
+  overflow: hidden;
+  opacity: 0.8;
+}
+
+.card-95:hover {
+  transform: scale(1.05);
+  height: 250px;
+}
+
+.card-95:hover .card-body {
+  max-height: 120px;
+  opacity: 1;
 }
 
 

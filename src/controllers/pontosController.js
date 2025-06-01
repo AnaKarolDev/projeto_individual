@@ -8,12 +8,10 @@ function cadastrar(req, res) {
     var acertos = req.body.acertos;
     var erros = req.body.erros;
     var fkJogador = req.body.fkJogador;
-    var fkJogo_memoria = req.body.fkJogo_memoria;
 
     console.log("ID jogador:", fkJogador);
     console.log("Acertos:", acertos);
     console.log("erros:", erros);
-    console.log("ID jogo da memória:", fkJogo_memoria);
 
     // Faça as validações dos valores
     if (acertos == undefined || isNaN(acertos)) {
@@ -22,9 +20,7 @@ function cadastrar(req, res) {
         res.status(400).send("Erros está inválido!");
     } else if (fkJogador == undefined || isNaN(fkJogador)) {
         res.status(400).send("Jogador está inválido!");
-    }else if (fkJogo_memoria == undefined || isNaN(fkJogo_memoria)) {
-        res.status(400).send("Jogo memória está inválido!");
-    }  else {
+    } else {
 
         // Passe os valores como parâmetro e vá para o arquivo pontosModel.js
         pontosModel.cadastrar(acertos, erros, fkJogador)
@@ -45,7 +41,18 @@ function cadastrar(req, res) {
     }
 }
 
+function ranking(req, res) {
+    pontosModel.ranking()
+        .then(function (resultado) {
+            res.status(200).json(resultado);
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            res.status(500).json({ erro: erro.sqlMessage });
+        });
+}
+
 module.exports = {
-    // autenticar,
+    ranking,
     cadastrar
 }

@@ -1,0 +1,103 @@
+ @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Gidole&family=Pixelify+Sans:wght@400..700&family=Tilt+Neon&display=swap');
+
+
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: "Pixelify Sans";
+  background-image: url("../assets/imgs/cloud_backgroud.png");
+  background-size: cover;
+
+}
+ 
+ .voltar-home {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .voltar-home a {
+      text-decoration: none;
+      color: #ef5291;
+      font-weight: bold;
+      border: 2px outset #ef5291;
+      padding: 8px 16px;
+      transition: 0.3s;
+    }
+
+    .voltar-home a:hover {
+      background-color: #ef5291;
+      color: white;
+    }
+
+    .sobre_mim_texto img {
+      width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sobre_mim_texto {
+      align-items: center;
+    }
+
+    .sobre_mim {
+  background-color: #FEEDE7;
+  width: 960px;
+  height: 433px;
+
+}
+
+.sobre_mim_titulo {
+  height: 44px;
+  background-color: #FFFFFF;
+  border: 2px outset #fff;
+}
+
+.sobre_mim_titulo h4 {
+  margin-top: 10px;
+  padding-left: 24px;
+  color: #ef5291;
+  font-size: 20px;
+}
+
+.sobre_mim_texto {
+  display: flex;
+  gap: 90px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.sobre_mim_texto p {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #7887B0;
+}
+
+.social .container .boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 30px 0;
+  align-items: center;
+}
+
+.social .container .sobre_mim {
+  display: flex;
+  border: 2px outset #ffff;
+  flex-direction: column;
+  align-self: auto;
+}
+
+.social p {
+  text-align: center;
+
+}
+
+.sobre_mim {
+  background-color: #FEEDE7;
+  width: 960px;
+  height: 433px;
+
+}

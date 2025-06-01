@@ -23,8 +23,6 @@
 
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
 
     <div class="janela">
@@ -33,7 +31,7 @@
 
             <div class="hello">
                 <h3>Olá, <span id="b_Jogador"></span></h3>
-                <!-- id="b_Jogador" -->
+
             </div>
 
             <div class="btn-nav-white">
@@ -54,19 +52,29 @@
             </div>
 
         </div>
-
-        <div class="dash">
-            <div id="alerta">
+        <div class="indicadores">
+            <div class="card-indicador">
+                <h4>Acertos Totais</h4>
+                <p id="indicadorAcertos">0</p>
+            </div>
+            <div class="card-indicador">
+                <h4>Jogadores</h4>
+                <p id="indicadorJogadores">0</p>
             </div>
 
-            <div class="btns-dash" id="btnDash">
-                <!-- O gráfico é chamado de acordo com o id (fk_pontos) do banco  -->
-            </div>
             <div id="graficos">
-                <canvas id="graficoDesempenho" width="400" height="200"></canvas>
+                <div id="graficos_bar">
+                    <canvas id="graficoRanking"></canvas>
+
+                </div>
+                <div id="graficos_pie">
+                    <canvas id="graficoQuiz"></canvas>
+                </div>
             </div>
+
+
         </div>
-    </div>
+
 
 
 </body>
@@ -75,129 +83,130 @@
 
 <script>
 
-    b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
-function carregarDadosDashboard() {
 
-    const idJogador = sessionStorage.ID_USUARIO;
-    if (!idJogador) {
-        console.error("Usuário não autenticado");
-        return;
-    }
 
-     fetch("/pontos/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        acerto: acertos,
-        erro: erros,
-        jogador: fkJogador
+    console.log("ID do jogador no sessionStorage:", sessionStorage.ID_USUARIO);
 
-      }),
-    })
-        .then(res => {
-            if (!res.ok) throw new Error('Erro ao buscar dados');
-            return res.json();
-        })
-        .then(dados => {
-            console.log('Dados recebidos:', dados);
-            // Agora exiba os dados na tela, ex:
-            document.getElementById('tentativas').textContent = dados.tentativas || 0;
-            document.getElementById('acertos').textContent = dados.acertos || 0;
-            document.getElementById('erros').textContent = dados.erros || 0;
+    document.addEventListener('DOMContentLoaded', () => {
+        const fkJogador = sessionStorage.ID_USUARIO;
+        b_Jogador.innerHTML = sessionStorage.NOME_USUARIO;
 
-            // Se quiser, atualize gráficos, tabelas, etc.
-        })
-        .catch(erro => {
-            console.error('Erro ao carregar dados:', erro);
-        });
-}
 
-console.log("ID do jogador no sessionStorage:", sessionStorage.ID_USUARIO);
+        if (!fkJogador) {
+            alert("Usuário não identificado. Faça login novamente.");
+            window.location.href = "/login.html";
+            return;
+        }
+        fetch("/pontos/ranking")
+            .then(res => res.json())
+            .then(dados => {
+                const nomes = dados.map(jogador => jogador.nome);
+                const acertos = dados.map(jogador => Number(jogador.totalAcertos));
 
-     document.addEventListener('DOMContentLoaded', () => {
-    const fkJogador = sessionStorage.ID_USUARIO;
+                const totalAcertos = acertos.reduce((soma, val) => soma + Number(val));
+                const qtdJogadores = nomes.length;
 
-    if (!fkJogador) {
-        alert("Usuário não identificado. Faça login novamente.");
-        window.location.href = "/login.html";
-        return;
-    }
+                document.getElementById('indicadorAcertos').textContent = totalAcertos;
+                document.getElementById('indicadorJogadores').textContent = qtdJogadores;
 
-    fetch(`/pontos/ultimos/${fkJogador}`)
-        .then(res => {
-            if (!res.ok) throw new Error("Erro ao buscar dados");
-            return res.json();
-        })
-        .then(dados => {
-            if (!dados || dados.length === 0) {
-                console.warn("Nenhum dado para exibir no gráfico.");
-                return;
-            }
+                const ctx = document.getElementById('graficoRanking').getContext('2d');
 
-            const tentativas = dados.map(d => d.tentativas).reverse();
-            const acertos = dados.map(d => d.acertos).reverse();
-            const erros = dados.map(d => d.erros).reverse();
-            const momentos = dados.map(d => d.momento).reverse();
-
-            const ctx = document.getElementById("graficoDesempenho").getContext("2d");
-
-            new Chart(ctx, {
-                type: "bar",
-                data: {
-                    labels: momentos,
-                    datasets: [
-                        {
-                            label: "Tentativas",
-                            data: tentativas,
-                            backgroundColor: "#ffcd56"
-                        },
-                        {
-                            label: "Acertos",
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: nomes,
+                        datasets: [{
+                            label: 'Total de Acertos',
                             data: acertos,
-                            backgroundColor: "#4bc0c0"
+                            backgroundColor: 'rgb(230, 0, 88)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            tension: 0.5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: 'rgb(230, 0, 88)'
+                                }
+                            }
                         },
-                        {
-                            label: "Erros",
-                            data: erros,
-                            backgroundColor: "#ff6384"
+                        scales: {
+                            x: {
+                                ticks: {
+                                    color: 'rgb(230, 0, 88)'
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    color: 'rgb(230, 0, 88)',
+                                    beginAtZero: true
+                                }
+                            }
                         }
-                    ]
+                    }
+                });
+            })
+            .catch(erro => console.error("Erro ao carregar ranking:", erro));
+
+
+    });
+    fetch("/quiz/estatisticas")
+        .then(res => res.json())
+        .then(dadosQuiz => {
+            const labels = dadosQuiz.map(d => d.resultado_playlist);
+            const totais = dadosQuiz.map(d => d.total);
+
+            const ctxQuiz = document.getElementById('graficoQuiz').getContext('2d');
+
+            new Chart(ctxQuiz, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Recomendações de Playlist',
+                        data: totais,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)'
+                        ],
+                        borderColor: 'white',
+                        borderWidth: 1
+                    }]
                 },
                 options: {
                     responsive: true,
                     plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
                         title: {
                             display: true,
-                            text: "Histórico de Desempenho"
-                        },
-                        legend: {
-                            position: "top"
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: "Quantidade"
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: "Data / Hora"
+                            text: 'Recomendações de Playlist',
+                            color: 'white',
+                            font: {
+                                size: 16,
+                                weight: 'bold'
                             }
                         }
+
                     }
                 }
             });
         })
-        .catch(erro => {
-            console.error("Erro ao carregar gráfico:", erro);
-        });
-});
+        .catch(erro => console.error("Erro ao carregar estatísticas do quiz:", erro));
+
 
 
 </script>

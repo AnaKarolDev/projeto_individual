@@ -33,7 +33,7 @@ button {
   color: #ef5291;
   border: 2px outset #fff;
   padding: 5px 15px;
-  cursor: default;
+  cursor: pointer;
   font-family: 'Pixelify sans';
 }
 
@@ -42,7 +42,7 @@ button {
   color: #ef5291;
   border: 2px outset #fff;
   padding: 5px 15px;
-  cursor: default;
+  cursor: pointer;
   font-family: 'Pixelify sans';
 }
 

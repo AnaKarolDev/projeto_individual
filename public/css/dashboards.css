@@ -131,6 +131,9 @@ body {
   overflow: auto;
 }
 
+
+/*Estilização jogo memória*/
+
 .jogo_memoria {
   display: flex;
   flex-direction: column;
@@ -174,24 +177,7 @@ body {
   cursor: pointer;
 }
 
-/* .item-regua {
-  width: 20%;
-  text-align: center;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-}
-
-.item-regua p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.item-regua p:nth-child(2) {
-  font-weight: 800;
-} */
+/*Quiz estilização*/
 
 .jogo_quiz {
   background-color: #FEEDE7;
@@ -302,12 +288,80 @@ body {
   display: block;
 }
 
-canvas {
-  width: 100% !important;
-  height: 100% !important;
+/*Indicadores*/
+
+.indicadores {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 30px auto 10px auto;
+  flex-wrap: wrap;
+  max-width: 700px;
 }
 
-/* PAGINA DOS GRÁFICOS 2023 */
+.card-indicador {
+  background-color: #FEEDE7;
+  border: 2px outset #fff;
+  padding: 20px;
+  color: rgb(230, 0, 88);
+  min-width: 150px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.card-indicador h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card-indicador p {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+
+/*Gráficos*/
+/* canvas {
+  width: 100px;
+  height: 100px;
+  
+} */
+
+#graficos {
+  max-width: 600px;
+  padding: 20px;
+  background-color: #FEEDE7;
+  border: 2px outset #fff;
+  margin-top: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#graficoRanking {
+  width: 500px;
+  height: 500px;
+}
+
+#graficoQuiz{
+  display: flex;
+  width: 500px;
+  height: 500px;
+}
+
+#graficos {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 30px;
+  height: fit-content;
+  width: 400px;
+}
+canvas {
+  border-radius: 10px;
+  max-width: 300px;
+  width: 300px;
+}
+
+
 
 .janela {
   display: flex;

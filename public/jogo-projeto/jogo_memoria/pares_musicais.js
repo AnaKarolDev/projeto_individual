@@ -208,7 +208,6 @@ if (!sessionStorage.ID_USUARIO || isNaN(Number(sessionStorage.ID_USUARIO))) {
             acertos: acertos,
             erros: erros,
             fkJogador: fkJogador,
-            fkJogo_memoria: fkJogo_memoria
         })
     })
         .then(res => {

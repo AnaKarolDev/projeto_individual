@@ -32,3 +32,14 @@ CREATE TABLE pontos (
     constraint fkJogoJogador foreign key (fkJogador) references jogador (id),
     constraint fkJogadorJogo foreign key (fkJogo_memoria) references jogo_memoria (idJogo_memoria)
 );
+
+CREATE TABLE quiz_musical (
+    idQuiz INT PRIMARY KEY AUTO_INCREMENT,
+    sentimento VARCHAR(20),
+    tipo_musica VARCHAR(20),
+    objetivo VARCHAR(20),
+    resultado_playlist VARCHAR(30),
+    momento DATETIME DEFAULT CURRENT_TIMESTAMP,
+    fkJogador INT,
+    CONSTRAINT fkJogadorQuiz FOREIGN KEY (fkJogador) REFERENCES jogador(id)
+);

@@ -6,4 +6,8 @@ router.post("/cadastrar", function (req, res) {
     pontosController.cadastrar(req, res);
 })
 
+router.get("/ranking", function (req, res) {
+    pontosController.ranking(req, res);
+});
+
 module.exports = router;

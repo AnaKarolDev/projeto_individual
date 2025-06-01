@@ -20,6 +20,9 @@ var indexRouter = require("./src/routes/index");
 var jogadorRouter = require("./src/routes/jogador");
 var jogoMemoriaRouter = require("./src/routes/jogoMemoria");
 var pontosRouter = require("./src/routes/pontos");
+var quizRouter = require("./src/routes/quiz");
+
+
 
 
 app.use(express.json());
@@ -32,6 +35,7 @@ app.use("/index", indexRouter);
 app.use("/jogador", jogadorRouter);
 app.use("/jogoMemoria", jogoMemoriaRouter);
 app.use("/pontos", pontosRouter);
+app.use("/quiz", quizRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`
