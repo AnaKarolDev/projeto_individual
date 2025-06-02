@@ -51,25 +51,28 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else {
 
-               // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        jogadorModel.cadastrar(nomeServer, emailServer, senhaServer)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
-}
-
+               
+       jogadorModel.verificarEmail(emailServer)
+        .then((resultado) => {
+            if (resultado.length > 0) {
+                res.status(409).send("E-mail já cadastrado.");
+            } else {
+                // E-mail ainda não está cadastrado
+                jogadorModel.cadastrar(nomeServer, emailServer, senhaServer)
+                    .then((resultadoCadastro) => {
+                        res.json(resultadoCadastro);
+                    })
+                    .catch((erro) => {
+                        console.log(erro);
+                        res.status(500).json(erro.sqlMessage);
+                    });
+            }
+        })
+        .catch((erro) => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+    }}
 module.exports = {
     autenticar,
     cadastrar

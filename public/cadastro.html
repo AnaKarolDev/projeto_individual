@@ -88,7 +88,7 @@
             <h4>Ana Karoline &hearts; Todos os direitos reservados &copy; 2025</h4>
         </div>
     </div>
-    </body>
+</body>
 
 </html>
 
@@ -133,20 +133,16 @@
         }
 
         if (nome.length <= 1) {
-            mostrarAlertaErro("Insira um nome maior."); // Usando a nova função
-            // finalizarAguardar(); // Removido
+            mostrarAlertaErro("Insira um nome maior."); 
             return false;
         } else if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
-            mostrarAlertaErro("Insira um e-mail válido!"); // Usando a nova função
-            // finalizarAguardar(); // Removido
+            mostrarAlertaErro("Insira um e-mail válido!"); 
             return false;
-        } else if (senha.length < 6) {
-            mostrarAlertaErro("A senha deve ter pelo menos 6 caracteres!"); // Usando a nova função
-            // finalizarAguardar(); // Removido
+        }  else if (senha.length < 6) {
+            mostrarAlertaErro("A senha deve ter pelo menos 6 caracteres!"); 
             return false;
         } else if (confirmacaoSenha != senha) {
-            mostrarAlertaErro("As senhas devem ser iguais!"); // Usando a nova função
-            // finalizarAguardar(); // Removido
+            mostrarAlertaErro("As senhas devem ser iguais!"); 
             return false;
         }
 
@@ -162,12 +158,10 @@
             }),
         }).then(async function (resposta) {
             if (resposta.ok) {
-                mostrarAlertaErro("Cadastro realizado com sucesso! Redirecionando para o login..."); // Usando a nova função
-
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, 2000);
-
+                mostrarAlertaErro("Cadastro realizado com sucesso! Redirecionando para o login...");
+                setTimeout(() => window.location = "login.html", 2000);
+            } else if (resposta.status === 409) {
+                mostrarAlertaErro("Este e-mail já está cadastrado. Tente outro.");
             } else {
                 const texto = await resposta.text();
                 throw new Error(texto);
@@ -175,17 +169,13 @@
         })
             .catch(function (erro) {
                 console.error("Erro na requisição:", erro);
-                mostrarAlertaErro("Erro ao cadastrar: " + erro.message); // Usando a nova função
+                mostrarAlertaErro("Erro ao cadastrar: " + erro.message);
             });
 
 
         return false;
     }
 
-    // A função sumirMensagem foi substituída pela lógica de fecharAlertaErro
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none";
-    // }
 
     // Adicionando uma função finalizarAguardar para ser consistente (se você tiver um gif de loading no cadastro)
     function finalizarAguardar() {
