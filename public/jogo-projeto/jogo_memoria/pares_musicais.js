@@ -34,7 +34,6 @@ const paresCartas = [
 // Música de fundo
 document.addEventListener('DOMContentLoaded', function () {
 
-
     if (musicaFundo && botaoPlay) {
         botaoPlay.addEventListener('click', function () {
             if (musicaFundo.paused) {

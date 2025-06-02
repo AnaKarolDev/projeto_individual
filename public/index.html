@@ -76,9 +76,9 @@
     <h2>Música</h2>
     <div class="music-cards">
       <div class="card-95">
-        <div class="card-header" >Congnição</div>
+        <div class="card-header" >Cognição</div>
         <div class="card-body" onclick="window.location.href='./music_cards/cognicao.html'">
-          <p>Descubra como música atua na Congnição<br></p>
+          <p>Descubra como música atua na Cognição<br></p>
           <h4>Saiba mais!</h4>
         </div>
         
@@ -129,11 +129,11 @@
 
 </html>
 <script>
-  // Espera o carregamento completo da estrutura da página
+  
   window.addEventListener('DOMContentLoaded', () => {
     const audio = document.getElementById("musica_fundo");
 
-    // Função que inicia o áudio
+    // Função que inicia o áudio no início
     const iniciarAudio = () => {
       audio.play().then(() => {
         console.log("Música iniciada com sucesso.");
@@ -141,11 +141,11 @@
         console.log("Erro ao iniciar a música:", erro);
       });
 
-      // Remove o listener para evitar que a música tente iniciar de novo
+      // Nessa parte impede que a música comece de novo
       window.removeEventListener("scroll", iniciarAudio);
     };
 
-    // Escuta a rolagem da página apenas uma vez
+    // Assim que o usuário rola a página ele chama a função dentro da const iniciarAudio
     window.addEventListener("scroll", iniciarAudio, { once: true });
   });
 </script>

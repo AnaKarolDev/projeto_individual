@@ -97,7 +97,7 @@
 
         if (alertaErroWrapper && mensagemErroSpan) {
             mensagemErroSpan.innerHTML = mensagem;
-            alertaErroWrapper.style.display = 'flex'; // Torna visível
+            alertaErroWrapper.style.display = 'flex'; 
         }
     }
 
@@ -105,7 +105,7 @@
     function fecharAlertaErro() {
         const alertaErroWrapper = document.getElementById('alertaErroWrapper');
         if (alertaErroWrapper) {
-            alertaErroWrapper.style.display = 'none'; // Esconde
+            alertaErroWrapper.style.display = 'none'; 
         }
     }
 
@@ -161,8 +161,7 @@
                     setTimeout(function () {
 
                         window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
-
+                    }, 1000); 
                 });
 
             } else {

@@ -125,12 +125,12 @@
             senha == "" ||
             confirmacaoSenha == ""
         ) {
-            mostrarAlertaErro("Todos os campos devem ser preenchidos!"); // Usando a nova função
-            // cardErro.style.display = "block"; // Removido
-            // mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)"; // Removido
-            // finalizarAguardar(); // Se tiver uma função finalizarAguardar, certifique-se que ela lide com o display do loading gif
+            mostrarAlertaErro("Todos os campos devem ser preenchidos!"); 
+        
             return false;
         }
+
+        // Aqui faço verificações na hora de fazer o cadastro do usuário
 
         if (nome.length <= 1) {
             mostrarAlertaErro("Insira um nome maior."); 
@@ -177,13 +177,8 @@
     }
 
 
-    // Adicionando uma função finalizarAguardar para ser consistente (se você tiver um gif de loading no cadastro)
     function finalizarAguardar() {
         console.log("Finalizou o carregamento (cadastro)");
-        // Se você tiver um gif de loading no cadastro, pode escondê-lo aqui
-        // const loadingGif = document.getElementById('loading-gif');
-        // if (loadingGif) {
-        //     loadingGif.style.display = 'none';
-        // }
+       
     }
 </script>

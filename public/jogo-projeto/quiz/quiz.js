@@ -48,7 +48,7 @@ perguntas.forEach(pergunta => {
 
     const input = document.createElement("input");
     input.type = "radio";
-    input.name = pergunta.id; // cada grupo de radio terá mesmo name (ex: q1, q2, q3)
+    input.name = pergunta.id; 
     input.value = opcao.valor;
     input.id = `${pergunta.id}_${index}`;
 
@@ -88,6 +88,7 @@ document.getElementById("submitBtn").addEventListener("click", function (e) {
   const { q1, q2, q3 } = respostas;
 
   let resultadoPlaylist = "dance";
+  
   if (q1 === "triste" || q3 === "curar") {
     resultadoPlaylist = "confort";
   } else if (q1 === "animado" && q2 === "dancante") {

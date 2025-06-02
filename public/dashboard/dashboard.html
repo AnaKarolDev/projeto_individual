@@ -53,7 +53,7 @@
                     <p id="indicadorAcertos">0</p>
                 </div>
                 <div class="card-indicador">
-                    <h4>Jogadores</h4>
+                    <h4>Jogadores cadastrados</h4>
                     <p id="indicadorJogadores">0</p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
 
         if (!fkJogador) {
             alert("Usuário não identificado. Faça login novamente.");
-            window.location.href = "../login.html"; // Ensure correct path to login.html
+            window.location.href = "../login.html"; 
             return;
         }
 
@@ -107,8 +107,8 @@
                         datasets: [{
                             label: 'Total de Acertos',
                             data: acertos,
-                            backgroundColor: 'rgb(230, 0, 88)', // Your existing vibrant pink for bars
-                            borderColor: 'rgba(75, 192, 192, 1)', // Existing border color
+                            backgroundColor: 'rgb(230, 0, 88)', 
+                            borderColor: 'rgba(75, 192, 192, 1)', 
                             tension: 0.5
                         }]
                     },
@@ -117,19 +117,19 @@
                         plugins: {
                             legend: {
                                 labels: {
-                                    color: 'var(--text-color-soft)' // Using CSS variable for consistency
+                                    color: 'var(--text-color-soft)' 
                                 }
                             }
                         },
                         scales: {
                             x: {
                                 ticks: {
-                                    color: 'var(--text-color-soft)' // Using CSS variable for consistency
+                                    color: 'var(--text-color-soft)' 
                                 }
                             },
                             y: {
                                 ticks: {
-                                    color: 'var(--text-color-soft)', // Using CSS variable for consistency
+                                    color: 'var(--text-color-soft)', 
                                     beginAtZero: true
                                 }
                             }
@@ -172,7 +172,7 @@
                             legend: {
                                 position: 'top',
                                 labels: {
-                                    color: 'var(--accent-color-dark)', // Using CSS variable for consistency
+                                    color: 'var(--accent-color-dark)', 
                                     font: {
                                         size: 12
                                     }
@@ -181,7 +181,7 @@
                             title: {
                                 display: true,
                                 text: 'Recomendações de Playlist',
-                                color: 'var(--accent-color-dark)', // Using CSS variable for consistency
+                                color: 'var(--accent-color-dark)', 
                                 font: {
                                     size: 16,
                                     weight: 'bold'
