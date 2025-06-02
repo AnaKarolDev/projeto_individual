@@ -10,8 +10,8 @@ require("dotenv").config({ path: caminho_env });
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA_APP = process.env.APP_PORT || 3333;
-var HOST_APP = process.env.APP_HOST || 'localhost';
+var PORTA_APP = process.env.APP_PORT;
+var HOST_APP = process.env.APP_HOST;
 
 var app = express();
     
